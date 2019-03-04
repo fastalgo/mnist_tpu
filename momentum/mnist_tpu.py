@@ -173,12 +173,32 @@ def model_fn(features, labels, mode, params):
         })
   if mode == tf.estimator.ModeKeys.TRAIN:
     optimizer = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE)
-
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    print("************************* I'm using Adam Optimizer *************************")
+    '''
+    batch = tf.Variable(0, dtype=data_type())
+    learning_rate = tf.train.exponential_decay(
+      0.01,                # Base learning rate.
+      batch * BATCH_SIZE,  # Current index into the dataset.
+      train_size,          # Decay step.
+      0.95,                # Decay rate.
+      staircase=True)
+    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss,
+                                                       global_step=batch)
+    '''
     logits = model(image, training=True)
     loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
     accuracy = tf.metrics.accuracy(
         labels=labels, predictions=tf.argmax(logits, axis=1))
-
+    
     # Name tensors to be logged with LoggingTensorHook.
     tf.identity(LEARNING_RATE, 'learning_rate')
     tf.identity(loss, 'cross_entropy')
@@ -313,6 +333,17 @@ def model_fn(features, labels, mode, params):
         decay_steps=100000,
         decay_rate=0.96)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
     return tf.contrib.tpu.TPUEstimatorSpec(
