@@ -41,6 +41,54 @@ from official.utils.misc import model_helpers
 
 LEARNING_RATE = 1e-4
 
+# For open source environment, add grandparent directory for import
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(sys.path[0]))))
+
+#from official.mnist import dataset  # pylint: disable=wrong-import-position
+#from official.mnist import mnist  # pylint: disable=wrong-import-position
+#import mnist  # pylint: disable=wrong-import-position
+#from mnist import dataset  # pylint: disable=wrong-import-position
+
+# Cloud TPU Cluster Resolver flags
+tf.flags.DEFINE_string(
+    "tpu", default=None,
+    help="The Cloud TPU to use for training. This should be either the name "
+    "used when creating the Cloud TPU, or a grpc://ip.address.of.tpu:8470 "
+    "url.")
+tf.flags.DEFINE_string(
+    "tpu_zone", default=None,
+    help="[Optional] GCE zone where the Cloud TPU is located in. If not "
+    "specified, we will attempt to automatically detect the GCE project from "
+    "metadata.")
+tf.flags.DEFINE_string(
+    "gcp_project", default=None,
+    help="[Optional] Project name for the Cloud TPU-enabled project. If not "
+    "specified, we will attempt to automatically detect the GCE project from "
+    "metadata.")
+
+# Model specific parameters
+tf.flags.DEFINE_string("data_dir", "",
+                       "Path to directory containing the MNIST dataset")
+tf.flags.DEFINE_string("model_dir", None, "Estimator model_dir")
+tf.flags.DEFINE_integer("batch_size", 1024,
+                        "Mini-batch size for the training. Note that this "
+                        "is the global batch size and not the per-shard batch.")
+tf.flags.DEFINE_integer("eval_batch_size", 1000,
+                        "Mini-batch size for the eval. Note that this "
+                        "is the global batch size and not the per-shard batch.")
+tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
+tf.flags.DEFINE_integer("eval_steps", 0,
+                        "Total number of evaluation steps. If `0`, evaluation "
+                        "after training is skipped.")
+tf.flags.DEFINE_float("learning_rate", 0.05, "Learning rate.")
+
+tf.flags.DEFINE_bool("use_tpu", True, "Use TPUs rather than plain CPUs")
+tf.flags.DEFINE_bool("enable_predict", True, "Do some predictions at the end")
+tf.flags.DEFINE_integer("iterations", 50,
+                        "Number of iterations per TPU training loop.")
+tf.flags.DEFINE_integer("num_shards", 8, "Number of shards (TPU chips).")
+
+FLAGS = tf.flags.FLAGS
 
 def create_model(data_format):
   """Model to recognize digits in the MNIST dataset.
@@ -229,56 +277,6 @@ def run_mnist(flags_obj):
     })
     mnist_classifier.export_savedmodel(flags_obj.export_dir, input_fn,
                                        strip_default_attrs=True)
-
-# For open source environment, add grandparent directory for import
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(sys.path[0]))))
-
-#from official.mnist import dataset  # pylint: disable=wrong-import-position
-#from official.mnist import mnist  # pylint: disable=wrong-import-position
-#import mnist  # pylint: disable=wrong-import-position
-#from mnist import dataset  # pylint: disable=wrong-import-position
-
-# Cloud TPU Cluster Resolver flags
-tf.flags.DEFINE_string(
-    "tpu", default=None,
-    help="The Cloud TPU to use for training. This should be either the name "
-    "used when creating the Cloud TPU, or a grpc://ip.address.of.tpu:8470 "
-    "url.")
-tf.flags.DEFINE_string(
-    "tpu_zone", default=None,
-    help="[Optional] GCE zone where the Cloud TPU is located in. If not "
-    "specified, we will attempt to automatically detect the GCE project from "
-    "metadata.")
-tf.flags.DEFINE_string(
-    "gcp_project", default=None,
-    help="[Optional] Project name for the Cloud TPU-enabled project. If not "
-    "specified, we will attempt to automatically detect the GCE project from "
-    "metadata.")
-
-# Model specific parameters
-tf.flags.DEFINE_string("data_dir", "",
-                       "Path to directory containing the MNIST dataset")
-tf.flags.DEFINE_string("model_dir", None, "Estimator model_dir")
-tf.flags.DEFINE_integer("batch_size", 1024,
-                        "Mini-batch size for the training. Note that this "
-                        "is the global batch size and not the per-shard batch.")
-tf.flags.DEFINE_integer("eval_batch_size", 1000,
-                        "Mini-batch size for the eval. Note that this "
-                        "is the global batch size and not the per-shard batch.")
-tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
-tf.flags.DEFINE_integer("eval_steps", 0,
-                        "Total number of evaluation steps. If `0`, evaluation "
-                        "after training is skipped.")
-tf.flags.DEFINE_float("learning_rate", 0.05, "Learning rate.")
-
-tf.flags.DEFINE_bool("use_tpu", True, "Use TPUs rather than plain CPUs")
-tf.flags.DEFINE_bool("enable_predict", True, "Do some predictions at the end")
-tf.flags.DEFINE_integer("iterations", 50,
-                        "Number of iterations per TPU training loop.")
-tf.flags.DEFINE_integer("num_shards", 8, "Number of shards (TPU chips).")
-
-FLAGS = tf.flags.FLAGS
-
 
 def metric_fn(labels, logits):
   accuracy = tf.metrics.accuracy(
