@@ -80,7 +80,7 @@ tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
 tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
                         "after training is skipped.")
-tf.flags.DEFINE_float("learning_rate", 0.05, "Learning rate.")
+tf.flags.DEFINE_float("learning_rate", 0.01, "Learning rate.")
 
 tf.flags.DEFINE_bool("use_tpu", True, "Use TPUs rather than plain CPUs")
 tf.flags.DEFINE_bool("enable_predict", True, "Do some predictions at the end")
@@ -327,23 +327,25 @@ def model_fn(features, labels, mode, params):
   loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
 
   if mode == tf.estimator.ModeKeys.TRAIN:
+    '''
     learning_rate = tf.train.exponential_decay(
         FLAGS.learning_rate,
         tf.train.get_global_step(),
         decay_steps=100000,
         decay_rate=0.96)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
-    print("++++++++++++++++++++++++ I'm using Gradient Optimizer ++++++++++++++++++++++++")
+    '''
+    batch = tf.Variable(0, dtype=data_type())
+    learning_rate = tf.train.exponential_decay(
+      FLAGS.learning_rate,                # Base learning rate.
+      tf.train.get_global_step(),  # Current index into the dataset.
+      train_size,          # Decay step.
+      0.95,                # Decay rate.
+      staircase=True)
+    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss,
+                                                       global_step=tf.train.get_global_step())
+    
+    print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
     return tf.contrib.tpu.TPUEstimatorSpec(
