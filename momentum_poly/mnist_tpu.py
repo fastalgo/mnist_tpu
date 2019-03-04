@@ -77,6 +77,8 @@ tf.flags.DEFINE_integer("eval_batch_size", 1000,
                         "Mini-batch size for the eval. Note that this "
                         "is the global batch size and not the per-shard batch.")
 tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
+
+tf.flags.DEFINE_integer("warm_up_epochs", 0, "Total number of epochs for warming up.")
 tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
                         "after training is skipped.")
@@ -337,7 +339,7 @@ def model_fn(features, labels, mode, params):
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     '''
     # batch = tf.Variable(0, dtype=data_type())
-    warm = tf.Variable(60000.0*FLAGS.warm_up_epochs/tf.cast(BATCH_SIZE, tf.float32), dtype=tf.float32)
+    warm = tf.Variable(50000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32), dtype=tf.float32)
     learning_rate = tf.cond(tf.greater(warm, tf.train.get_global_step()), lambda : (tf.train.get_global_step()/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(
     FLAGS.learning_rate, tf.train.get_global_step() * FLAGS.batch_size, FLAGS.batch_size * FLAGS.steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     '''
