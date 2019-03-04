@@ -335,11 +335,11 @@ def model_fn(features, labels, mode, params):
         decay_rate=0.96)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     '''
-    batch = tf.Variable(0, dtype=data_type())
+    # batch = tf.Variable(0, dtype=data_type())
     learning_rate = tf.train.exponential_decay(
       FLAGS.learning_rate,                # Base learning rate.
       tf.train.get_global_step(),  # Current index into the dataset.
-      train_size,          # Decay step.
+      100000,          # Decay step.
       0.95,                # Decay rate.
       staircase=True)
     optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss,
