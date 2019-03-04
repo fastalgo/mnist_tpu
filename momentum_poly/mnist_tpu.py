@@ -81,6 +81,7 @@ tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
                         "after training is skipped.")
 tf.flags.DEFINE_float("learning_rate", 0.01, "Learning rate.")
+tf.flags.DEFINE_float("poly_power", 0.5, "The power of poly decay scheme.")
 
 tf.flags.DEFINE_bool("use_tpu", True, "Use TPUs rather than plain CPUs")
 tf.flags.DEFINE_bool("enable_predict", True, "Do some predictions at the end")
@@ -336,13 +337,17 @@ def model_fn(features, labels, mode, params):
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     '''
     # batch = tf.Variable(0, dtype=data_type())
+    warm = tf.Variable(60000.0*FLAGS.warm_up_epochs/tf.cast(BATCH_SIZE, tf.float32), dtype=tf.float32)
+    learning_rate = tf.cond(tf.greater(warm, tf.train.get_global_step()), lambda : (tf.train.get_global_step()/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(
+    FLAGS.learning_rate, tf.train.get_global_step() * FLAGS.batch_size, FLAGS.batch_size * FLAGS.steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
+    '''
     learning_rate = tf.train.exponential_decay(
       FLAGS.learning_rate,                # Base learning rate.
       tf.train.get_global_step(),  # Current index into the dataset.
       100000,          # Decay step.
       0.95,                # Decay rate.
       staircase=True)
-    #optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss, global_step=tf.train.get_global_step())
+    '''
     optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     
     print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
