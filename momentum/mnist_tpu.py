@@ -342,8 +342,8 @@ def model_fn(features, labels, mode, params):
       100000,          # Decay step.
       0.95,                # Decay rate.
       staircase=True)
-    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss,
-                                                       global_step=tf.train.get_global_step())
+    #optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss, global_step=tf.train.get_global_step())
+    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     
     print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
     if FLAGS.use_tpu:
