@@ -60,6 +60,9 @@ tf.flags.DEFINE_string("model_dir", None, "Estimator model_dir")
 tf.flags.DEFINE_integer("batch_size", 1024,
                         "Mini-batch size for the training. Note that this "
                         "is the global batch size and not the per-shard batch.")
+tf.flags.DEFINE_integer("eval_batch_size", 1000,
+                        "Mini-batch size for the eval. Note that this "
+                        "is the global batch size and not the per-shard batch.")
 tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
 tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
@@ -170,8 +173,8 @@ def main(argv):
       model_fn=model_fn,
       use_tpu=FLAGS.use_tpu,
       train_batch_size=FLAGS.batch_size,
-      eval_batch_size=FLAGS.batch_size,
-      predict_batch_size=FLAGS.batch_size,
+      eval_batch_size=FLAGS.eval_batch_size,
+      predict_batch_size=FLAGS.eval_batch_size,
       params={"data_dir": FLAGS.data_dir},
       config=run_config)
   # TPUEstimator.train *requires* a max_steps argument.
