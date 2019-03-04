@@ -235,8 +235,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(sys.path[0]))))
 
 #from official.mnist import dataset  # pylint: disable=wrong-import-position
 #from official.mnist import mnist  # pylint: disable=wrong-import-position
-import mnist  # pylint: disable=wrong-import-position
-from mnist import dataset  # pylint: disable=wrong-import-position
+#import mnist  # pylint: disable=wrong-import-position
+#from mnist import dataset  # pylint: disable=wrong-import-position
 
 # Cloud TPU Cluster Resolver flags
 tf.flags.DEFINE_string(
@@ -294,7 +294,8 @@ def model_fn(features, labels, mode, params):
   if isinstance(image, dict):
     image = features["image"]
 
-  model = mnist.create_model("channels_last")
+  #model = mnist.create_model("channels_last")
+  model = create_model("channels_last")
 
   if mode == tf.estimator.ModeKeys.PREDICT:
     logits = model(image, training=False)
