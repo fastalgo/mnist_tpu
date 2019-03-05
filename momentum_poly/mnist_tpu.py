@@ -46,11 +46,6 @@ LEARNING_RATE = 1e-4
 # For open source environment, add grandparent directory for import
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(sys.path[0]))))
 
-#from official.mnist import dataset  # pylint: disable=wrong-import-position
-#from official.mnist import mnist  # pylint: disable=wrong-import-position
-#import mnist  # pylint: disable=wrong-import-position
-#from mnist import dataset  # pylint: disable=wrong-import-position
-
 # Cloud TPU Cluster Resolver flags
 tf.flags.DEFINE_string(
     "tpu", default=None,
@@ -147,164 +142,6 @@ def create_model(data_format):
       ])
 
 
-def define_mnist_flags():
-  flags_core.define_base()
-  flags_core.define_performance(num_parallel_calls=False)
-  flags_core.define_image()
-  flags.adopt_module_key_flags(flags_core)
-  flags_core.set_defaults(data_dir='/tmp/mnist_data',
-                          model_dir='/tmp/mnist_model',
-                          batch_size=100,
-                          train_epochs=40)
-
-def model_fn(features, labels, mode, params):
-  """The model_fn argument for creating an Estimator."""
-  model = create_model(params['data_format'])
-  image = features
-  if isinstance(image, dict):
-    image = features['image']
-
-  if mode == tf.estimator.ModeKeys.PREDICT:
-    logits = model(image, training=False)
-    predictions = {
-        'classes': tf.argmax(logits, axis=1),
-        'probabilities': tf.nn.softmax(logits),
-    }
-    return tf.estimator.EstimatorSpec(
-        mode=tf.estimator.ModeKeys.PREDICT,
-        predictions=predictions,
-        export_outputs={
-            'classify': tf.estimator.export.PredictOutput(predictions)
-        })
-  if mode == tf.estimator.ModeKeys.TRAIN:
-    optimizer = tf.train.AdamOptimizer(learning_rate=LEARNING_RATE)
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    print("************************* I'm using Adam Optimizer *************************")
-    '''
-    batch = tf.Variable(0, dtype=data_type())
-    learning_rate = tf.train.exponential_decay(
-      0.01,                # Base learning rate.
-      batch * BATCH_SIZE,  # Current index into the dataset.
-      train_size,          # Decay step.
-      0.95,                # Decay rate.
-      staircase=True)
-    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(loss,
-                                                       global_step=batch)
-    '''
-    logits = model(image, training=True)
-    loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
-    accuracy = tf.metrics.accuracy(
-        labels=labels, predictions=tf.argmax(logits, axis=1))
-    
-    # Name tensors to be logged with LoggingTensorHook.
-    tf.identity(LEARNING_RATE, 'learning_rate')
-    tf.identity(loss, 'cross_entropy')
-    tf.identity(accuracy[1], name='train_accuracy')
-
-    # Save accuracy scalar to Tensorboard output.
-    tf.summary.scalar('train_accuracy', accuracy[1])
-
-    return tf.estimator.EstimatorSpec(
-        mode=tf.estimator.ModeKeys.TRAIN,
-        loss=loss,
-        train_op=optimizer.minimize(loss, tf.train.get_or_create_global_step()))
-  if mode == tf.estimator.ModeKeys.EVAL:
-    logits = model(image, training=False)
-    loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
-    return tf.estimator.EstimatorSpec(
-        mode=tf.estimator.ModeKeys.EVAL,
-        loss=loss,
-        eval_metric_ops={
-            'accuracy':
-                tf.metrics.accuracy(
-                    labels=labels, predictions=tf.argmax(logits, axis=1)),
-        })
-
-
-def run_mnist(flags_obj):
-  """Run MNIST training and eval loop.
-  Args:
-    flags_obj: An object containing parsed flag values.
-  """
-  model_helpers.apply_clean(flags_obj)
-  model_function = model_fn
-
-  session_config = tf.ConfigProto(
-      inter_op_parallelism_threads=flags_obj.inter_op_parallelism_threads,
-      intra_op_parallelism_threads=flags_obj.intra_op_parallelism_threads,
-      allow_soft_placement=True)
-
-  distribution_strategy = distribution_utils.get_distribution_strategy(
-      flags_core.get_num_gpus(flags_obj), flags_obj.all_reduce_alg)
-
-  run_config = tf.estimator.RunConfig(
-      train_distribute=distribution_strategy, session_config=session_config)
-
-  data_format = flags_obj.data_format
-  if data_format is None:
-    data_format = ('channels_first'
-                   if tf.test.is_built_with_cuda() else 'channels_last')
-  mnist_classifier = tf.estimator.Estimator(
-      model_fn=model_function,
-      model_dir=flags_obj.model_dir,
-      config=run_config,
-      params={
-          'data_format': data_format,
-      })
-
-  # Set up training and evaluation input functions.
-  def train_input_fn():
-    """Prepare data for training."""
-
-    # When choosing shuffle buffer sizes, larger sizes result in better
-    # randomness, while smaller sizes use less memory. MNIST is a small
-    # enough dataset that we can easily shuffle the full epoch.
-    ds = dataset.train(flags_obj.data_dir)
-    ds = ds.cache().shuffle(buffer_size=60000).batch(flags_obj.batch_size)
-
-    # Iterate through the dataset a set number (`epochs_between_evals`) of times
-    # during each training session.
-    ds = ds.repeat(flags_obj.epochs_between_evals)
-    return ds
-
-  def eval_input_fn():
-    return dataset.test(flags_obj.data_dir).batch(
-        flags_obj.batch_size).make_one_shot_iterator().get_next()
-
-  # Set up hook that outputs training logs every 100 steps.
-  train_hooks = hooks_helper.get_train_hooks(
-      flags_obj.hooks, model_dir=flags_obj.model_dir,
-      batch_size=flags_obj.batch_size)
-
-  # Train and evaluate model.
-  for _ in range(flags_obj.train_epochs // flags_obj.epochs_between_evals):
-    mnist_classifier.train(input_fn=train_input_fn, hooks=train_hooks)
-    eval_results = mnist_classifier.evaluate(input_fn=eval_input_fn)
-    print('\nEvaluation results:\n\t%s\n' % eval_results)
-    # file.write('\nEvaluation results:\n\t%s\n' % eval_results)
-
-    if model_helpers.past_stop_threshold(flags_obj.stop_threshold, eval_results['accuracy']):
-      # file.write('Test Accuracy: %.2f%%' % eval_results['accuracy']);
-      # file.close();
-      break
-
-  # Export the model
-  if flags_obj.export_dir is not None:
-    image = tf.placeholder(tf.float32, [None, 28, 28])
-    input_fn = tf.estimator.export.build_raw_serving_input_receiver_fn({
-        'image': image,
-    })
-    mnist_classifier.export_savedmodel(flags_obj.export_dir, input_fn,
-                                       strip_default_attrs=True)
-
 def metric_fn(labels, logits):
   accuracy = tf.metrics.accuracy(
       labels=labels, predictions=tf.argmax(logits, axis=1))
@@ -313,13 +150,11 @@ def metric_fn(labels, logits):
 
 def model_fn(features, labels, mode, params):
   """model_fn constructs the ML model used to predict handwritten digits."""
-
   del params
   image = features
   if isinstance(image, dict):
     image = features["image"]
 
-  #model = mnist.create_model("channels_last")
   model = create_model("channels_last")
 
   if mode == tf.estimator.ModeKeys.PREDICT:
@@ -335,30 +170,11 @@ def model_fn(features, labels, mode, params):
   warm = tf.Variable(0.0, dtype=tf.float32)
 
   if mode == tf.estimator.ModeKeys.TRAIN:
-    '''
-    learning_rate = tf.train.exponential_decay(
-        FLAGS.learning_rate,
-        tf.train.get_global_step(),
-        decay_steps=100000,
-        decay_rate=0.96)
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
-    '''
-    # batch = tf.Variable(0, dtype=data_type())
-    # warm = tf.Variable(50000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32), dtype=tf.float32)
     warm = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
     g_step = tf.cast(tf.train.get_global_step(), tf.float32)
-    # learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step * FLAGS.batch_size, FLAGS.batch_size * FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step, FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
-    '''
-    learning_rate = tf.train.exponential_decay(
-      FLAGS.learning_rate,                # Base learning rate.
-      tf.train.get_global_step(),  # Current index into the dataset.
-      100000,          # Decay step.
-      0.95,                # Decay rate.
-      staircase=True)
-    '''
+    # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
-    
     print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
@@ -385,7 +201,8 @@ def train_input_fn(params):
 
 
 def eval_input_fn(params):
-  batch_size = params["batch_size"]
+  #batch_size = params["batch_size"]
+  batch_size = 1000
   data_dir = params["data_dir"]
   ds = dataset.test(data_dir).batch(batch_size, drop_remainder=True)
   return ds
