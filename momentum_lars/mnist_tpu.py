@@ -40,6 +40,115 @@ from official.utils.logs import hooks_helper
 from official.utils.misc import distribution_utils
 from official.utils.misc import model_helpers
 
+from tensorflow.python.client import device_lib
+
+from tensorflow.python.ops import array_ops
+from tensorflow.python.ops import linalg_ops
+from tensorflow.python.ops import math_ops
+from tensorflow.python.training import optimizer
+from tensorflow.python.training import training_ops
+from tensorflow.python.framework import ops
+
+
+class LARSOptimizer(optimizer.Optimizer):
+
+  def __init__(
+      self,
+      learning_rate,
+      momentum=0.9,
+      weight_decay=0.0001,
+      eeta=0.001,
+      epsilon=0.0,
+      name="LARSOptimizer",
+      skip_list=None,
+      use_nesterov=False):
+
+    if momentum < 0.0:
+      raise ValueError("momentum should be positive: %s" % momentum)
+    if weight_decay < 0.0:
+      raise ValueError("weight_decay should be positive: %s" % weight_decay)
+    super(LARSOptimizer, self).__init__(use_locking=False, name=name)
+
+    self._learning_rate = learning_rate
+    self._momentum = momentum
+    self._weight_decay = weight_decay
+    self._eeta = eeta
+    self._epsilon = epsilon
+    self._name = name
+    self._skip_list = skip_list
+    self._use_nesterov = use_nesterov
+    self._learning_rate_tensor = ops.convert_to_tensor(self._learning_rate, name="learning_rate")
+    self._momentum_tensor = ops.convert_to_tensor(momentum, name="momentum")
+
+  def _create_slots(self, var_list):
+    for v in var_list:
+      self._zeros_slot(v, "momentum", self._name)
+
+  def compute_lr(self, grad, var):
+    scaled_lr = self._learning_rate
+    if self._skip_list is None or not any(v in var.name
+                                          for v in self._skip_list):
+      w_norm = linalg_ops.norm(var, ord=2)
+      g_norm = linalg_ops.norm(grad, ord=2)
+      trust_ratio = array_ops.where(
+          math_ops.greater(w_norm, 0),
+          array_ops.where(
+              math_ops.greater(g_norm, 0),
+              (self._eeta * w_norm /
+               (g_norm + self._weight_decay * w_norm + self._epsilon)), 1.0),
+          1.0)
+      scaled_lr = self._learning_rate * trust_ratio
+    return scaled_lr
+
+  def _apply_dense(self, grad, var):
+    scaled_lr = self.compute_lr(grad, var)
+    mom = self.get_slot(var, "momentum")
+    return training_ops.apply_momentum(
+        var,
+        mom,
+        scaled_lr,
+        grad,
+        self._momentum,
+        use_locking=False,
+        use_nesterov=self._use_nesterov)
+
+  def _resource_apply_dense(self, grad, var):
+    scaled_lr = self.compute_lr(grad, var)
+    mom = self.get_slot(var, "momentum")
+    return training_ops.resource_apply_momentum(
+        var.handle,
+        mom.handle,
+        scaled_lr,
+        grad,
+        self._momentum,
+        use_locking=False,
+        use_nesterov=self._use_nesterov)
+
+  # Fallback to momentum optimizer for sparse tensors
+  def _apply_sparse(self, grad, var):
+    mom = self.get_slot(var, "momentum")
+    return training_ops.sparse_apply_momentum(
+        var,
+        mom,
+        math_ops.cast(self._learning_rate_tensor, var.dtype.base_dtype),
+        grad.values,
+        grad.indices,
+        math_ops.cast(self._momentum_tensor, var.dtype.base_dtype),
+        use_locking=self._use_locking,
+        use_nesterov=self._use_nesterov).op
+
+  def _resource_apply_sparse(self, grad, var, indices):
+    mom = self.get_slot(var, "momentum")
+    return training_ops.resource_sparse_apply_momentum(
+        var.handle,
+        mom.handle,
+        math_ops.cast(self._learning_rate_tensor, grad.dtype),
+        grad,
+        indices,
+        math_ops.cast(self._momentum_tensor, grad.dtype),
+        use_locking=self._use_locking,
+        use_nesterov=self._use_nesterov)
+
 
 LEARNING_RATE = 1e-4
 
@@ -174,7 +283,8 @@ def model_fn(features, labels, mode, params):
     g_step = tf.cast(tf.train.get_global_step(), tf.float32)
     learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step, FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
-    optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
+    # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
+    optimizer = LARSOptimizer(learning_rate)
     print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
