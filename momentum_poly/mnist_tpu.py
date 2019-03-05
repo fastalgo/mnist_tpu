@@ -289,12 +289,12 @@ def run_mnist(flags_obj):
     mnist_classifier.train(input_fn=train_input_fn, hooks=train_hooks)
     eval_results = mnist_classifier.evaluate(input_fn=eval_input_fn)
     print('\nEvaluation results:\n\t%s\n' % eval_results)
+    # file.write('\nEvaluation results:\n\t%s\n' % eval_results)
 
-    if model_helpers.past_stop_threshold(flags_obj.stop_threshold,
-                                         eval_results['accuracy']):
+    if model_helpers.past_stop_threshold(flags_obj.stop_threshold, eval_results['accuracy']):
+      # file.write('Test Accuracy: %.2f%%' % eval_results['accuracy']);
+      # file.close();
       break
-    file.write('Test Accuracy: %.2f%%' % eval_results['accuracy'])
-    file.close()
 
   # Export the model
   if flags_obj.export_dir is not None:
@@ -404,7 +404,7 @@ def main(argv):
   tf.logging.set_verbosity(tf.logging.INFO)
   file = open("batch-"+str(FLAGS.batch_size)+"-lr-"+str(FLAGS.learning_rate)+"-warmup-"+
   str(FLAGS.warm_up_epochs)+"-poly-"+str(FLAGS.poly_power)+"-"+strftime("%Y-%m-%d-%H-%M-%S", localtime())+".log",'w')
-  file.write("****** MNIST by LARS Solver with Poly Decay ******\n")
+  file.write("****** MNIST by with Poly Decay ******\n")
   file.write("batch_size: " + str(FLAGS.batch_size) + "; ")
   file.write("init_lr: " + str(FLAGS.learning_rate) + "; ")
   file.write("poly_power: " + str(FLAGS.poly_power) + "; ")
@@ -439,7 +439,10 @@ def main(argv):
   # --eval_steps * --batch_size.
   # So if you change --batch_size then change --eval_steps too.
   if FLAGS.eval_steps:
-    estimator.evaluate(input_fn=eval_input_fn, steps=FLAGS.eval_steps)
+    eval_results = estimator.evaluate(input_fn=eval_input_fn, steps=FLAGS.eval_steps)
+    print('\nEvaluation results:\n\t%s\n' % eval_results)
+    file.write('\nEvaluation results:\n\t%s\n' % eval_results)
+    file.close()
 
   # Run prediction on top few samples of test data.
   if FLAGS.enable_predict:
