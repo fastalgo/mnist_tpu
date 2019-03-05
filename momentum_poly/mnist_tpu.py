@@ -266,7 +266,7 @@ def run_mnist(flags_obj):
     # randomness, while smaller sizes use less memory. MNIST is a small
     # enough dataset that we can easily shuffle the full epoch.
     ds = dataset.train(flags_obj.data_dir)
-    ds = ds.cache().shuffle(buffer_size=50000).batch(flags_obj.batch_size)
+    ds = ds.cache().shuffle(buffer_size=60000).batch(flags_obj.batch_size)
 
     # Iterate through the dataset a set number (`epochs_between_evals`) of times
     # during each training session.
@@ -343,7 +343,8 @@ def model_fn(features, labels, mode, params):
     # warm = tf.Variable(50000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32), dtype=tf.float32)
     warm = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
     g_step = tf.cast(tf.train.get_global_step(), tf.float32)
-    learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step * FLAGS.batch_size, FLAGS.batch_size * FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
+    # learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step * FLAGS.batch_size, FLAGS.batch_size * FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
+    learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step, FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     '''
     learning_rate = tf.train.exponential_decay(
       FLAGS.learning_rate,                # Base learning rate.
@@ -375,7 +376,7 @@ def train_input_fn(params):
   # computed according to the input pipeline deployment. See
   # `tf.contrib.tpu.RunConfig` for details.
   ds = dataset.train(data_dir).cache().repeat().shuffle(
-      buffer_size=50000).batch(batch_size, drop_remainder=True)
+      buffer_size=60000).batch(batch_size, drop_remainder=True)
   return ds
 
 
