@@ -328,6 +328,7 @@ def model_fn(features, labels, mode, params):
 
   logits = model(image, training=(mode == tf.estimator.ModeKeys.TRAIN))
   loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
+  warm = tf.Variable(0.0, dtype=tf.float32)
 
   if mode == tf.estimator.ModeKeys.TRAIN:
     '''
@@ -339,9 +340,10 @@ def model_fn(features, labels, mode, params):
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     '''
     # batch = tf.Variable(0, dtype=data_type())
-    warm = tf.Variable(50000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32), dtype=tf.float32)
-    learning_rate = tf.cond(tf.greater(warm, tf.train.get_global_step()), lambda : (tf.train.get_global_step()/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(
-    FLAGS.learning_rate, tf.train.get_global_step() * FLAGS.batch_size, FLAGS.batch_size * FLAGS.steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
+    # warm = tf.Variable(50000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32), dtype=tf.float32)
+    warm = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
+    g_step = tf.cast(tf.train.get_global_step(), tf.float32)
+    learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step * FLAGS.batch_size, FLAGS.batch_size * FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     '''
     learning_rate = tf.train.exponential_decay(
       FLAGS.learning_rate,                # Base learning rate.
