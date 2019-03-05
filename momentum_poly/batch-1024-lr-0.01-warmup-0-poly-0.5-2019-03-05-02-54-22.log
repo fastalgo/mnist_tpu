@@ -1,5 +1,0 @@
-****** MNIST by LARS Solver with Poly Decay ******
-batch_size: 1024; init_lr: 0.01; poly_power: 0.5; warm_up: 0
-
-Evaluation results:
-	{'loss': 0.032691926, 'global_step': 2000, 'accuracy': 0.9897}
