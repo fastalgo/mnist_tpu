@@ -1,5 +1,0 @@
-****** MNIST by with Poly Decay ******
-batch_size: 60000; init_lr: 0.13; poly_power: 0.5; warm_up: 15
-
-Evaluation results:
-	{'loss': 0.6882452, 'global_step': 35, 'accuracy': 0.782}
