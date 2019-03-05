@@ -31,6 +31,8 @@ import tensorflow as tf  # pylint: disable=g-bad-import-order
 from absl import app as absl_app
 from absl import flags
 import tensorflow as tf  # pylint: disable=g-bad-import-order
+import time
+from time import localtime, strftime
 
 from official.mnist import dataset
 from official.utils.flags import core as flags_core
@@ -291,6 +293,8 @@ def run_mnist(flags_obj):
     if model_helpers.past_stop_threshold(flags_obj.stop_threshold,
                                          eval_results['accuracy']):
       break
+    file.write('Test Accuracy: %.2f%%' % eval_results['accuracy'])
+    file.close()
 
   # Export the model
   if flags_obj.export_dir is not None:
@@ -398,6 +402,13 @@ def predict_input_fn(params):
 def main(argv):
   del argv  # Unused.
   tf.logging.set_verbosity(tf.logging.INFO)
+  file = open("batch-"+str(FLAGS.batch_size)+"-lr-"+str(FLAGS.learning_rate)+"-warmup-"+
+  str(FLAGS.warm_up_epochs)+"-poly-"+str(FLAGS.poly_power)+"-"+strftime("%Y-%m-%d-%H-%M-%S", localtime())+".log",'w')
+  file.write("****** MNIST by LARS Solver with Poly Decay ******\n")
+  file.write("batch_size: " + str(FLAGS.batch_size) + "; ")
+  file.write("init_lr: " + str(FLAGS.learning_rate) + "; ")
+  file.write("poly_power: " + str(FLAGS.poly_power) + "; ")
+  file.write("warm_up: " + str(FLAGS.warm_up_epochs) + "\n")
 
   tpu_cluster_resolver = tf.contrib.cluster_resolver.TPUClusterResolver(
       FLAGS.tpu,
