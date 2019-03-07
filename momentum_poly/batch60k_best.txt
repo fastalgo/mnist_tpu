@@ -1,0 +1,16 @@
+batch_size: 60000; init_lr: 0.09; poly_power: 0.5; warm_up: 6
+
+["{'loss':", '0.3340052,', "'global_step':", '35,', "'accuracy':", '0.9224}']
+best accuracy: 0.9224
+
+
+batch_size: 60000; init_lr: 0.11; poly_power: 0.5; warm_up: 12
+
+["{'loss':", '0.31114864,', "'global_step':", '35,', "'accuracy':", '0.9244}']
+best accuracy: 0.9244
+
+
+batch_size: 60000; init_lr: 0.13; poly_power: 0.5; warm_up: 9
+
+["{'loss':", '0.27148125,', "'global_step':", '35,', "'accuracy':", '0.9374}']
+best accuracy: 0.9374
