@@ -1,0 +1,11 @@
+batch_size: 60000; init_lr: 15.0; poly_power: 0.5; warm_up: 9
+best accuracy: 0.9686
+
+batch_size: 60000; init_lr: 14.0; poly_power: 0.5; warm_up: 7
+best accuracy: 0.971
+
+batch_size: 60000; init_lr: 20.0; poly_power: 0.5; warm_up: 8
+best accuracy: 0.9728
+
+batch_size: 60000; init_lr: 25.0; poly_power: 0.5; warm_up: 8
+best accuracy: 0.9765
