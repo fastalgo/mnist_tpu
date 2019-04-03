@@ -294,7 +294,7 @@ def model_fn(features, labels, mode, params):
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
       
-    return output_spec = tf.contrib.tpu.TPUEstimatorSpec(
+    return tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
           loss=loss,
           train_op=train_op,
