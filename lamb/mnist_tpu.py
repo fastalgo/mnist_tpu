@@ -278,18 +278,17 @@ def model_fn(features, labels, mode, params):
 
   logits = model(image, training=(mode == tf.estimator.ModeKeys.TRAIN))
   loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
-  warm = tf.Variable(0.0, dtype=tf.float32)
+  # warm = tf.Variable(0.0, dtype=tf.float32)
 
   if mode == tf.estimator.ModeKeys.TRAIN:
-    warm = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
-    g_step = tf.cast(tf.train.get_global_step(), tf.float32)
-    learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step, FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
+    # warm = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
+    # g_step = tf.cast(tf.train.get_global_step(), tf.float32)
+    # learning_rate = tf.cond(tf.greater(warm, g_step), lambda : (g_step/warm*FLAGS.learning_rate), lambda : tf.train.polynomial_decay(FLAGS.learning_rate, g_step, FLAGS.train_steps, end_learning_rate=0.0001, power=FLAGS.poly_power, cycle=False, name=None))
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
-    optimizer = LARSOptimizer(learning_rate)
-    num_train_steps = FLAGS.train_steps
+    # optimizer = LARSOptimizer(learning_rate)
     num_warmup_steps = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
-    train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, num_train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
+    train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, FLAGS.train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
     
     # if FLAGS.use_tpu:
       # optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
