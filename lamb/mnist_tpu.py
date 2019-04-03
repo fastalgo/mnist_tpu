@@ -48,6 +48,7 @@ from tensorflow.python.ops import math_ops
 from tensorflow.python.training import optimizer
 from tensorflow.python.training import training_ops
 from tensorflow.python.framework import ops
+import optimization
 
 
 class LARSOptimizer(optimizer.Optimizer):
@@ -285,13 +286,21 @@ def model_fn(features, labels, mode, params):
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     optimizer = LARSOptimizer(learning_rate)
-    print("++++++++++++++++++++++++ I'm using Momentum Optimizer ++++++++++++++++++++++++")
+    train_op = optimization.create_optimizer(total_loss, learning_rate, num_train_steps, num_warmup_steps, use_tpu, poly_power, start_warmup_step)
+    
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
-    return tf.contrib.tpu.TPUEstimatorSpec(
-        mode=mode,
-        loss=loss,
-        train_op=optimizer.minimize(loss, tf.train.get_global_step()))
+      
+    return output_spec = tf.contrib.tpu.TPUEstimatorSpec(
+          mode=mode,
+          loss=total_loss,
+          train_op=train_op,
+          scaffold_fn=scaffold_fn)
+    
+    # return tf.contrib.tpu.TPUEstimatorSpec(
+        # mode=mode,
+        # loss=loss,
+        # train_op=optimizer.minimize(loss, tf.train.get_global_step()))
 
   if mode == tf.estimator.ModeKeys.EVAL:
     return tf.contrib.tpu.TPUEstimatorSpec(
