@@ -291,8 +291,8 @@ def model_fn(features, labels, mode, params):
     num_warmup_steps = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
     train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, num_train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
     
-    if FLAGS.use_tpu:
-      optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
+    # if FLAGS.use_tpu:
+      # optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
       
     return tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
