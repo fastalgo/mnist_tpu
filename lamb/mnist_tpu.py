@@ -186,6 +186,7 @@ tf.flags.DEFINE_integer("eval_batch_size", 1000,
 tf.flags.DEFINE_integer("train_steps", 1000, "Total number of training steps.")
 
 tf.flags.DEFINE_integer("warm_up_epochs", 0, "Total number of epochs for warming up.")
+tf.flags.DEFINE_integer("start_warmup_step", 0, "The step starting to warm up.")
 tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
                         "after training is skipped.")
@@ -286,14 +287,16 @@ def model_fn(features, labels, mode, params):
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     optimizer = LARSOptimizer(learning_rate)
-    train_op = optimization.create_optimizer(total_loss, learning_rate, num_train_steps, num_warmup_steps, use_tpu, poly_power, start_warmup_step)
+    num_train_steps = FLAGS.train_steps
+    num_warmup_steps = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
+    train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, num_train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
     
     if FLAGS.use_tpu:
       optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
       
     return output_spec = tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
-          loss=total_loss,
+          loss=loss,
           train_op=train_op,
           scaffold_fn=scaffold_fn)
     
