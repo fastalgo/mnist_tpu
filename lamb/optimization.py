@@ -6,9 +6,9 @@ from __future__ import print_function
 
 import re
 import tensorflow as tf
-from google3.third_party.tensorflow.python.ops import array_ops
-from google3.third_party.tensorflow.python.ops import linalg_ops
-from google3.third_party.tensorflow.python.ops import math_ops
+from tensorflow.python.ops import array_ops
+from tensorflow.python.ops import linalg_ops
+from tensorflow.python.ops import math_ops
 
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu,
@@ -30,23 +30,20 @@ def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu,
   # Implements linear warmup. I.e., if global_step - start_warmup_step <
   # num_warmup_steps, the learning rate will be
   # `(global_step - start_warmup_step)/num_warmup_steps * init_lr`.
-  if num_warmup_steps:
-    tf.logging.info("++++++ warmup starts at step " + str(start_warmup_step)
-                    + ", for " + str(num_warmup_steps) + " steps ++++++")
-    global_steps_int = tf.cast(global_step, tf.int32)
-    start_warm_int = tf.constant(start_warmup_step, dtype=tf.int32)
-    global_steps_int = global_steps_int - start_warm_int
-    warmup_steps_int = tf.constant(num_warmup_steps, dtype=tf.int32)
-
-    global_steps_float = tf.cast(global_steps_int, tf.float32)
-    warmup_steps_float = tf.cast(warmup_steps_int, tf.float32)
-
-    warmup_percent_done = global_steps_float / warmup_steps_float
-    warmup_learning_rate = init_lr * warmup_percent_done
-
-    is_warmup = tf.cast(global_steps_int < warmup_steps_int, tf.float32)
-    learning_rate = (
-        (1.0 - is_warmup) * learning_rate + is_warmup * warmup_learning_rate)
+  # if num_warmup_steps > 0:
+  # condition = tf.greater(num_warmup_steps, 0.0)
+  # if condition:
+  tf.logging.info("++++++ warmup starts at step " + str(start_warmup_step) + ", for " + str(num_warmup_steps) + " steps ++++++")
+  global_steps_int = tf.cast(global_step, tf.int32)
+  start_warm_int = tf.constant(start_warmup_step, dtype=tf.int32)
+  global_steps_int = global_steps_int - start_warm_int
+  warmup_steps_int = tf.constant(num_warmup_steps, dtype=tf.int32)
+  global_steps_float = tf.cast(global_steps_int, tf.float32)
+  warmup_steps_float = tf.cast(warmup_steps_int, tf.float32)
+  warmup_percent_done = global_steps_float / warmup_steps_float
+  warmup_learning_rate = init_lr * warmup_percent_done
+  is_warmup = tf.cast(global_steps_int < warmup_steps_int, tf.float32)
+  learning_rate = ((1.0 - is_warmup) * learning_rate + is_warmup * warmup_learning_rate)
 
   # It is OK that you use this optimizer for finetuning, since this
   # is how the model was trained (note that the Adam m/v variables are NOT

@@ -1,0 +1,2 @@
+****** MNIST by with Poly Decay ******
+batch_size: 1024; init_lr: 0.004; poly_power: 0.5; warm_up: 1

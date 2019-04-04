@@ -287,7 +287,7 @@ def model_fn(features, labels, mode, params):
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     # optimizer = LARSOptimizer(learning_rate)
-    num_warmup_steps = 60000.0*FLAGS.warm_up_epochs/tf.cast(FLAGS.batch_size, tf.float32)
+    num_warmup_steps = int(60000.0*FLAGS.warm_up_epochs/FLAGS.batch_size)
     train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, FLAGS.train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
     
     # if FLAGS.use_tpu:
@@ -296,8 +296,8 @@ def model_fn(features, labels, mode, params):
     return tf.contrib.tpu.TPUEstimatorSpec(
           mode=mode,
           loss=loss,
-          train_op=train_op,
-          scaffold_fn=scaffold_fn)
+          train_op=train_op)
+    #scaffold_fn=scaffold_fn)
     
     # return tf.contrib.tpu.TPUEstimatorSpec(
         # mode=mode,
