@@ -1,0 +1,175 @@
+warmup 10, LR 0.001
+Removing gs://bert-pretrain-data/mnist_log3/#1554332779547067...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-0.index#1554332748545180...
+Removing gs://bert-pretrain-data/mnist_log3/checkpoint#1554332783832139...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-0.meta#1554332752313222...
+Removing gs://bert-pretrain-data/mnist_log3/events.out.tfevents.1554332736.yangyouucb#1554332786826180...
+Removing gs://bert-pretrain-data/mnist_log3/graph.pbtxt#1554332741591391...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-2050.data-00000-of-00001#1554332781125530...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-2050.index#1554332781819079...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-0.data-00000-of-00001#1554332747790768...
+Removing gs://bert-pretrain-data/mnist_log3/model.ckpt-2050.meta#1554332785711673...
+Removing gs://bert-pretrain-data/mnist_log3/eval/#1554332807668610...
+Removing gs://bert-pretrain-data/mnist_log3/eval/events.out.tfevents.1554332807.yangyouucb#1554332810691327...
+/ [1/12 objects]   8% Done                                                      / [2/12 objects]  16% Done                                                      / [3/12 objects]  25% Done                                                      / [4/12 objects]  33% Done                                                      / [5/12 objects]  41% Done                                                      / [6/12 objects]  50% Done                                                      / [7/12 objects]  58% Done                                                      / [8/12 objects]  66% Done                                                      / [9/12 objects]  75% Done                                                      / [10/12 objects]  83% Done                                                     / [11/12 objects]  91% Done                                                     / [12/12 objects] 100% Done                                                     
+Operation completed over 12 objects.                                             
+W0404 01:35:56.430896 140056623412672 __init__.py:44] file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/usr/local/lib/python2.7/dist-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+W0404 01:35:56.668363 140056623412672 __init__.py:44] file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/googleapiclient/discovery_cache/__init__.py", line 41, in autodetect
+    from . import file_cache
+  File "/usr/local/lib/python2.7/dist-packages/googleapiclient/discovery_cache/file_cache.py", line 41, in <module>
+    'file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth')
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+INFO:tensorflow:Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      value: "10.240.1.20:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f615c8f6a90>, '_model_dir': 'gs://bert-pretrain-data/mnist_log3/', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f615f260ad0>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.20:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.20:8470'}
+I0404 01:35:56.802011 140056623412672 estimator.py:201] Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      value: "10.240.1.20:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f615c8f6a90>, '_model_dir': 'gs://bert-pretrain-data/mnist_log3/', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f615f260ad0>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_evaluation_master': u'grpc://10.240.1.20:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.20:8470'}
+INFO:tensorflow:_TPUContext: eval_on_tpu True
+I0404 01:35:56.802561 140056623412672 tpu_context.py:202] _TPUContext: eval_on_tpu True
+INFO:tensorflow:Querying Tensorflow master (grpc://10.240.1.20:8470) for TPU system metadata.
+I0404 01:35:57.122828 140056623412672 tpu_system_metadata.py:59] Querying Tensorflow master (grpc://10.240.1.20:8470) for TPU system metadata.
+2019-04-04 01:35:57.125989: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Found TPU system:
+I0404 01:35:57.139887 140056623412672 tpu_system_metadata.py:120] Found TPU system:
+INFO:tensorflow:*** Num TPU Cores: 8
+I0404 01:35:57.140218 140056623412672 tpu_system_metadata.py:121] *** Num TPU Cores: 8
+INFO:tensorflow:*** Num TPU Workers: 1
+I0404 01:35:57.140567 140056623412672 tpu_system_metadata.py:122] *** Num TPU Workers: 1
+INFO:tensorflow:*** Num TPU Cores Per Worker: 8
+I0404 01:35:57.140634 140056623412672 tpu_system_metadata.py:124] *** Num TPU Cores Per Worker: 8
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 11489354590383575959)
+I0404 01:35:57.140697 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 11489354590383575959)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 12030694275847931587)
+I0404 01:35:57.140899 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 12030694275847931587)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 5440774359443783579)
+I0404 01:35:57.140976 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 5440774359443783579)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 6835016804061548578)
+I0404 01:35:57.141041 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 6835016804061548578)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 10452160124112740922)
+I0404 01:35:57.141120 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 10452160124112740922)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 15659714225302749919)
+I0404 01:35:57.141181 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 15659714225302749919)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 9738151983637843051)
+I0404 01:35:57.141241 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 9738151983637843051)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 17131822685375429637)
+I0404 01:35:57.141309 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 17131822685375429637)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 14685912261538055072)
+I0404 01:35:57.141370 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 14685912261538055072)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 9706921028628160382)
+I0404 01:35:57.141428 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 9706921028628160382)
+INFO:tensorflow:*** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 16576097964458494997)
+I0404 01:35:57.141537 140056623412672 tpu_system_metadata.py:126] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 16576097964458494997)
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+W0404 01:35:57.145869 140056623412672 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+INFO:tensorflow:Calling model_fn.
+I0404 01:35:57.158258 140056623412672 estimator.py:1111] Calling model_fn.
+WARNING:tensorflow:From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+W0404 01:35:58.883469 140056623412672 deprecation.py:323] From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+ERROR:tensorflow:Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+E0404 01:35:58.950218 140056623412672 tpu.py:330] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/keras/layers/core.py:143: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+W0404 01:35:59.126140 140056623412672 deprecation.py:506] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/keras/layers/core.py:143: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:209: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+W0404 01:35:59.208528 140056623412672 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:209: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/learning_rate_decay_v2.py:321: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+W0404 01:35:59.235272 140056623412672 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/learning_rate_decay_v2.py:321: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+INFO:tensorflow:++++++ warmup starts at step 0, for 10 steps ++++++
+I0404 01:35:59.240315 140056623412672 optimization.py:36] ++++++ warmup starts at step 0, for 10 steps ++++++
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.402462 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.447572 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.497270 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.542984 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.593183 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.639662 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.690794 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:*********** I'm using LAMB correction ***********
+I0404 01:35:59.734703 140056623412672 optimization.py:160] *********** I'm using LAMB correction ***********
+INFO:tensorflow:Create CheckpointSaverHook.
+I0404 01:35:59.760409 140056623412672 basic_session_run_hooks.py:527] Create CheckpointSaverHook.
+INFO:tensorflow:Done calling model_fn.
+I0404 01:35:59.778019 140056623412672 estimator.py:1113] Done calling model_fn.
+INFO:tensorflow:TPU job name worker
+I0404 01:36:03.123328 140056623412672 tpu_estimator.py:447] TPU job name worker
+INFO:tensorflow:Graph was finalized.
+I0404 01:36:03.238713 140056623412672 monitored_session.py:222] Graph was finalized.
+INFO:tensorflow:Running local_init_op.
+I0404 01:36:03.928180 140056623412672 session_manager.py:491] Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+I0404 01:36:03.979918 140056623412672 session_manager.py:493] Done running local_init_op.
+INFO:tensorflow:Saving checkpoints for 0 into gs://bert-pretrain-data/mnist_log3/model.ckpt.
+I0404 01:36:06.593722 140056623412672 basic_session_run_hooks.py:594] Saving checkpoints for 0 into gs://bert-pretrain-data/mnist_log3/model.ckpt.
+INFO:tensorflow:Initialized dataset iterators in 0 seconds
+I0404 01:36:17.985111 140056623412672 util.py:51] Initialized dataset iterators in 0 seconds
+INFO:tensorflow:Installing graceful shutdown hook.
+I0404 01:36:17.985872 140056623412672 session_support.py:345] Installing graceful shutdown hook.
+2019-04-04 01:36:17.986262: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:354] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+INFO:tensorflow:Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+I0404 01:36:17.993726 140056623412672 session_support.py:102] Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+INFO:tensorflow:Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+I0404 01:36:18.012274 140056623412672 session_support.py:130] Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+INFO:tensorflow:Init TPU system
+I0404 01:36:18.024616 140056623412672 tpu_estimator.py:504] Init TPU system
+INFO:tensorflow:Initialized TPU in 7 seconds
+I0404 01:36:25.069675 140056623412672 tpu_estimator.py:510] Initialized TPU in 7 seconds
+INFO:tensorflow:Starting infeed thread controller.
+I0404 01:36:25.070611 140055806613248 tpu_estimator.py:463] Starting infeed thread controller.
+INFO:tensorflow:Starting outfeed thread controller.
+I0404 01:36:25.071176 140055393859328 tpu_estimator.py:482] Starting outfeed thread controller.
+INFO:tensorflow:Enqueue next (35) batch(es) of data to infeed.
+I0404 01:36:25.123405 140056623412672 tpu_estimator.py:536] Enqueue next (35) batch(es) of data to infeed.
+INFO:tensorflow:Dequeue next (35) batch(es) of data from outfeed.
+I0404 01:36:25.124051 140056623412672 tpu_estimator.py:540] Dequeue next (35) batch(es) of data from outfeed.
