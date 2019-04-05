@@ -14,6 +14,7 @@ with open(filename) as f:
             acclist = mystr[-1].split('}');
             acc = float(acclist[0]);
             if acc > best_acc:
+            # if acc > 0.985:
                 best_acc = acc
                 print(config)
                 print("best accuracy: " + str(best_acc))

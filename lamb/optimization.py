@@ -12,7 +12,7 @@ from tensorflow.python.ops import math_ops
 
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu,
-                     poly_power, start_warmup_step):
+                     poly_power, start_warmup_step, weight_decay_input):
   """Creates an optimizer training op."""
   global_step = tf.train.get_or_create_global_step()
 
@@ -54,7 +54,7 @@ def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu,
   # size of 64 in the finetune.
   optimizer = LAMBOptimizer(
       learning_rate=learning_rate,
-      weight_decay_rate=0.01,
+      weight_decay_rate=weight_decay_input,
       beta_1=0.9,
       beta_2=0.999,
       epsilon=1e-6,

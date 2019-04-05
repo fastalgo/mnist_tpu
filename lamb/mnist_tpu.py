@@ -192,6 +192,7 @@ tf.flags.DEFINE_integer("eval_steps", 0,
                         "after training is skipped.")
 tf.flags.DEFINE_float("learning_rate", 0.01, "Learning rate.")
 tf.flags.DEFINE_float("poly_power", 0.5, "The power of poly decay scheme.")
+tf.flags.DEFINE_float("weight_decay_input", 0.01, "The weight decay term.")
 
 tf.flags.DEFINE_bool("use_tpu", True, "Use TPUs rather than plain CPUs")
 tf.flags.DEFINE_bool("enable_predict", True, "Do some predictions at the end")
@@ -288,7 +289,7 @@ def model_fn(features, labels, mode, params):
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     # optimizer = LARSOptimizer(learning_rate)
     num_warmup_steps = int(60000.0*FLAGS.warm_up_epochs/FLAGS.batch_size)
-    train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, FLAGS.train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step)
+    train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, FLAGS.train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step, FLAGS.weight_decay_input)
     
     # if FLAGS.use_tpu:
       # optimizer = tf.contrib.tpu.CrossShardOptimizer(optimizer)
@@ -341,10 +342,11 @@ def main(argv):
   del argv  # Unused.
   tf.logging.set_verbosity(tf.logging.INFO)
   file = open("batch-"+str(FLAGS.batch_size)+"-lr-"+str(FLAGS.learning_rate)+"-warmup-"+
-  str(FLAGS.warm_up_epochs)+"-poly-"+str(FLAGS.poly_power)+"-"+strftime("%Y-%m-%d-%H-%M-%S", localtime())+".log",'w')
+  str(FLAGS.warm_up_epochs)+"-poly-"+str(FLAGS.poly_power)+"-weight-decay-"+str(FLAGS.weight_decay_input)+"-"+strftime("%Y-%m-%d-%H-%M-%S", localtime())+".log",'w')
   file.write("****** MNIST by with Poly Decay ******\n")
   file.write("batch_size: " + str(FLAGS.batch_size) + "; ")
   file.write("init_lr: " + str(FLAGS.learning_rate) + "; ")
+  file.write("weight_decay: " + str(FLAGS.weight_decay_input) + "; ")
   file.write("poly_power: " + str(FLAGS.poly_power) + "; ")
   file.write("warm_up: " + str(FLAGS.warm_up_epochs) + "\n")
 

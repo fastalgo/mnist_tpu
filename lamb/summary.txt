@@ -1,0 +1,135 @@
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0001; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.048600286, 'global_step': 35, 'accuracy': 0.9849}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0002; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.03779604, 'global_step': 35, 'accuracy': 0.9871}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0004; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.03947433, 'global_step': 35, 'accuracy': 0.987}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0008; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.045691703, 'global_step': 35, 'accuracy': 0.9856}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.001; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.04117349, 'global_step': 35, 'accuracy': 0.9862}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.002; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.041427013, 'global_step': 35, 'accuracy': 0.9853}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.004; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.034019362, 'global_step': 35, 'accuracy': 0.9883}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.008; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.053166796, 'global_step': 35, 'accuracy': 0.986}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.01; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.048578024, 'global_step': 35, 'accuracy': 0.9824}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.044344045, 'global_step': 35, 'accuracy': 0.9857}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.02; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.043543197, 'global_step': 35, 'accuracy': 0.9846}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.04; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.034926295, 'global_step': 35, 'accuracy': 0.9864}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.08; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.034910433, 'global_step': 35, 'accuracy': 0.9863}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.1; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.04977657, 'global_step': 35, 'accuracy': 0.9817}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 1e-05; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.036826182, 'global_step': 35, 'accuracy': 0.9883}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 2e-05; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.04034524, 'global_step': 35, 'accuracy': 0.9868}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 4e-05; poly_power: 0.5; warm_up: 10
+
+Evaluation results:
+	{'loss': 0.043015245, 'global_step': 35, 'accuracy': 0.985}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.0001; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.054581385, 'global_step': 35, 'accuracy': 0.9857}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.001; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.061130255, 'global_step': 35, 'accuracy': 0.982}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.002; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.03895092, 'global_step': 35, 'accuracy': 0.9879}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.004; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.049342316, 'global_step': 35, 'accuracy': 0.9829}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.008; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.040681686, 'global_step': 35, 'accuracy': 0.9861}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.01; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.036626406, 'global_step': 35, 'accuracy': 0.9855}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.02; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.05048383, 'global_step': 35, 'accuracy': 0.9851}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.04; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.036547907, 'global_step': 35, 'accuracy': 0.9862}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.08; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.047039386, 'global_step': 35, 'accuracy': 0.983}
+****** MNIST by with Poly Decay ******
+batch_size: 60000; init_lr: 0.11; weight_decay: 0.1; poly_power: 0.5; warm_up: 11
+
+Evaluation results:
+	{'loss': 0.041699767, 'global_step': 35, 'accuracy': 0.9869}
