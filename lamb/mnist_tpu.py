@@ -190,7 +190,7 @@ tf.flags.DEFINE_integer("start_warmup_step", 0, "The step starting to warm up.")
 tf.flags.DEFINE_integer("eval_steps", 0,
                         "Total number of evaluation steps. If `0`, evaluation "
                         "after training is skipped.")
-tf.flags.DEFINE_float("learning_rate", 0.01, "Learning rate.")
+tf.flags.DEFINE_float("learning_rate", 0.001, "Learning rate.")
 tf.flags.DEFINE_float("poly_power", 0.5, "The power of poly decay scheme.")
 tf.flags.DEFINE_float("weight_decay_input", 0.01, "The weight decay term.")
 
