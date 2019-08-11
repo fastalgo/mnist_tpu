@@ -313,7 +313,7 @@ def train_input_fn(params):
   # computed according to the input pipeline deployment. See
   # `tf.contrib.tpu.RunConfig` for details.
   ds = dataset.train(data_dir).cache().repeat().shuffle(
-      buffer_size=60000).batch(batch_size, drop_remainder=True)
+      buffer_size=50000).batch(batch_size, drop_remainder=True)
   return ds
 
 

@@ -1,4 +1,12 @@
 export PYTHONPATH="${PYTHONPATH}:/usr/share/models/"
-gsutil -m rm -R -f gs://bert-pretrain-data/mnist_log3/*
-#python mnist_tpu.py --tpu=infer1 --use_tpu=True --data_dir=gs://bert-pretrain-data/mnist/ --model_dir=gs://bert-pretrain-data/mnist_log3/ --batch_size=1024 --iterations=500 --train_steps=2000 --eval_steps=10 --enable_predict=False --warm_up_epochs=0 --weight_decay_input=0.01 --learning_rate=0.001
-python mnist_tpu.py --tpu=infer1 --use_tpu=True --data_dir=gs://bert-pretrain-data/mnist/ --model_dir=gs://bert-pretrain-data/mnist_log3/ --batch_size=1024 --iterations=500 --train_steps=1758 --eval_steps=10 --enable_predict=False --learning_rate=0.004
+export TPU_NAME=v3-8-tpu
+export DATA_DIR=gs://yangyou-mnist/data
+export MODEL_DIR=gs://yangyou-mnist/log
+for i in 0 1 2 4 6 8 10
+do
+	for j in 0.0001 0.0002 0.0004 0.0006 0.0008 0.001 0.002 0.004 0.006 0.008 0.01 0.02 0.04 0.06 0.08 0.1
+	do
+		gsutil -m rm -R -f $MODEL_DIR/*
+		python mnist_tpu.py --tpu=$TPU_NAME --use_tpu=True --data_dir=$DATA_DIR --model_dir=$MODEL_DIR --batch_size=50000 --iterations=500 --train_steps=30 --eval_steps=10 --enable_predict=False --warm_up_epochs=$i --learning_rate=$j
+	done
+done

@@ -1,0 +1,633 @@
+Removing gs://yangyou-mnist/log/#1565553496239336...
+Removing gs://yangyou-mnist/log/checkpoint#1565553539790325...
+Removing gs://yangyou-mnist/log/model.ckpt-0.index#1565553509106121...
+Removing gs://yangyou-mnist/log/events.out.tfevents.1565553496.v3-8-tpu#1565553543043996...
+Removing gs://yangyou-mnist/log/model.ckpt-0.meta#1565553513677900...
+Removing gs://yangyou-mnist/log/model.ckpt-0.data-00000-of-00001#1565553508255891...
+Removing gs://yangyou-mnist/log/graph.pbtxt#1565553501027576...
+Removing gs://yangyou-mnist/log/model.ckpt-1758.index#1565553537335722...
+Removing gs://yangyou-mnist/log/model.ckpt-1758.data-00000-of-00001#1565553536443908...
+Removing gs://yangyou-mnist/log/model.ckpt-1758.meta#1565553542087582...
+Removing gs://yangyou-mnist/log/eval/#1565553591934903...
+Removing gs://yangyou-mnist/log/eval/events.out.tfevents.1565553592.v3-8-tpu#1565553595282955...
+/ [1/12 objects]   8% Done                                                      / [2/12 objects]  16% Done                                                      / [3/12 objects]  25% Done                                                      / [4/12 objects]  33% Done                                                      / [5/12 objects]  41% Done                                                      / [6/12 objects]  50% Done                                                      / [7/12 objects]  58% Done                                                      / [8/12 objects]  66% Done                                                      / [9/12 objects]  75% Done                                                      / [10/12 objects]  83% Done                                                     / [11/12 objects]  91% Done                                                     / [12/12 objects] 100% Done                                                     
+Operation completed over 12 objects.                                             
+WARNING: Logging before flag parsing goes to stderr.
+W0811 20:06:31.081413 139881578649024 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/hooks.py:28: The name tf.train.SessionRunHook is deprecated. Please use tf.estimator.SessionRunHook instead.
+
+W0811 20:06:31.082453 139881578649024 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/metric_hook.py:24: The name tf.train.LoggingTensorHook is deprecated. Please use tf.estimator.LoggingTensorHook instead.
+
+W0811 20:06:31.084985 139881578649024 deprecation_wrapper.py:119] From /home/chinayouyang1991/mnist_tpu/adam/optimization.py:83: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0811 20:06:31.085792 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:396: The name tf.app.run is deprecated. Please use tf.compat.v1.app.run instead.
+
+W0811 20:06:31.086388 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.set_verbosity is deprecated. Please use tf.compat.v1.logging.set_verbosity instead.
+
+W0811 20:06:31.086517 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.INFO is deprecated. Please use tf.compat.v1.logging.INFO instead.
+
+W0811 20:06:31.468739 139881578649024 lazy_loader.py:50] 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+W0811 20:06:31.475152 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:357: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+I0811 20:06:31.478807 139881578649024 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:06:31.526443 139881578649024 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:06:31.526756 139881578649024 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:06:31.646774 139881578649024 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:06:31.691337 139881578649024 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:06:31.691606 139881578649024 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:06:31.812352 139881578649024 estimator.py:209] Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.2:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f3891f7b090>, '_model_dir': 'gs://yangyou-mnist/log', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None, eval_training_input_configuration=2), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f3894159190>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_experimental_max_worker_delay_secs': None, '_evaluation_master': u'grpc://10.240.1.2:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.2:8470'}
+I0811 20:06:31.812715 139881578649024 tpu_context.py:209] _TPUContext: eval_on_tpu True
+I0811 20:06:32.139924 139881578649024 tpu_system_metadata.py:78] Querying Tensorflow master (grpc://10.240.1.2:8470) for TPU system metadata.
+2019-08-11 20:06:32.142889: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:06:32.155392 139881578649024 tpu_system_metadata.py:148] Found TPU system:
+I0811 20:06:32.155663 139881578649024 tpu_system_metadata.py:149] *** Num TPU Cores: 8
+I0811 20:06:32.156186 139881578649024 tpu_system_metadata.py:150] *** Num TPU Workers: 1
+I0811 20:06:32.156270 139881578649024 tpu_system_metadata.py:152] *** Num TPU Cores Per Worker: 8
+I0811 20:06:32.156327 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 2595861049155086756)
+I0811 20:06:32.156652 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8880340934783471729)
+I0811 20:06:32.156728 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 7255266493862251561)
+I0811 20:06:32.156781 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 8574914532065595404)
+I0811 20:06:32.156831 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 563851270547388479)
+I0811 20:06:32.156877 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 4083811370884240537)
+I0811 20:06:32.156924 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 15871884949842149465)
+I0811 20:06:32.156970 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 7616249832350468437)
+I0811 20:06:32.157027 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 2256569285371664229)
+I0811 20:06:32.157074 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 4065674425706782656)
+I0811 20:06:32.157123 139881578649024 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 16216119565208531567)
+W0811 20:06:32.163336 139881578649024 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/training_util.py:236: initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+I0811 20:06:32.175970 139881578649024 estimator.py:1145] Calling model_fn.
+W0811 20:06:32.176595 139881578649024 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:65: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+W0811 20:06:32.514996 139881578649024 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:38: The name tf.gfile.Open is deprecated. Please use tf.io.gfile.GFile instead.
+
+W0811 20:06:33.022274 139881578649024 deprecation.py:323] From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0811 20:06:33.082742 139881578649024 deprecation.py:506] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/init_ops.py:1251: calling __init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+E0811 20:06:33.088504 139881578649024 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:06:33.270432 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:281: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+W0811 20:06:33.284184 139881578649024 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:121: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0811 20:06:33.296521 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:289: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+W0811 20:06:33.296840 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:301: The name tf.train.get_global_step is deprecated. Please use tf.compat.v1.train.get_global_step instead.
+
+I0811 20:06:33.722496 139881578649024 basic_session_run_hooks.py:541] Create CheckpointSaverHook.
+I0811 20:06:33.737792 139881578649024 estimator.py:1147] Done calling model_fn.
+I0811 20:06:37.365101 139881578649024 tpu_estimator.py:499] TPU job name worker
+I0811 20:06:37.477749 139881578649024 monitored_session.py:240] Graph was finalized.
+I0811 20:06:38.044228 139881578649024 session_manager.py:500] Running local_init_op.
+I0811 20:06:38.080262 139881578649024 session_manager.py:502] Done running local_init_op.
+I0811 20:06:40.671091 139881578649024 basic_session_run_hooks.py:606] Saving checkpoints for 0 into gs://yangyou-mnist/log/model.ckpt.
+W0811 20:06:53.108139 139881578649024 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:741: load (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Prefer Variable.assign which has equivalent behavior in 2.X.
+I0811 20:06:53.220426 139881578649024 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:06:53.220997 139881578649024 session_support.py:332] Installing graceful shutdown hook.
+2019-08-11 20:06:53.222549: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:06:53.226949 139881578649024 session_support.py:82] Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+I0811 20:06:53.229154 139881578649024 session_support.py:105] Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+I0811 20:06:53.233160 139881578649024 tpu_estimator.py:557] Init TPU system
+I0811 20:06:58.913127 139881578649024 tpu_estimator.py:566] Initialized TPU in 5 seconds
+I0811 20:06:58.914105 139880685098752 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:06:58.914922 139880676706048 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:06:58.955194 139881578649024 tpu_estimator.py:590] Enqueue next (30) batch(es) of data to infeed.
+I0811 20:06:58.956053 139881578649024 tpu_estimator.py:594] Dequeue next (30) batch(es) of data from outfeed.
+I0811 20:06:58.969296 139880668313344 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:06:59.158345 139880668313344 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:07:03.626023 139880676706048 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:07:08.065944 139881578649024 basic_session_run_hooks.py:262] loss = 1.0047946, step = 30
+I0811 20:07:08.068542 139881578649024 basic_session_run_hooks.py:606] Saving checkpoints for 30 into gs://yangyou-mnist/log/model.ckpt.
+I0811 20:07:21.153650 139881578649024 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:07:21.153954 139881578649024 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:07:21.154246 139880685098752 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:07:21.154561 139880685098752 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:07:21.154772 139881578649024 error_handling.py:96] infeed marked as finished
+I0811 20:07:21.154973 139881578649024 tpu_estimator.py:602] Stop output thread controller
+I0811 20:07:21.155034 139881578649024 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:07:21.155236 139880676706048 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:07:21.155428 139880676706048 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:07:21.155647 139881578649024 error_handling.py:96] outfeed marked as finished
+I0811 20:07:21.155832 139881578649024 tpu_estimator.py:606] Shutdown TPU system.
+I0811 20:07:29.292004 139881578649024 estimator.py:368] Loss for final step: 1.0047946.
+I0811 20:07:29.292799 139881578649024 error_handling.py:96] training_loop marked as finished
+I0811 20:07:30.091751 139881578649024 estimator.py:1145] Calling model_fn.
+E0811 20:07:31.496697 139881578649024 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:07:31.687643 139881578649024 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:3154: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+W0811 20:07:31.714720 139881578649024 deprecation_wrapper.py:119] From mnist_tpu.py:258: The name tf.metrics.accuracy is deprecated. Please use tf.compat.v1.metrics.accuracy instead.
+
+I0811 20:07:31.736309 139881578649024 estimator.py:1147] Done calling model_fn.
+I0811 20:07:31.752585 139881578649024 evaluation.py:255] Starting evaluation at 2019-08-11T20:07:31Z
+I0811 20:07:31.752815 139881578649024 tpu_estimator.py:499] TPU job name worker
+I0811 20:07:31.826036 139881578649024 monitored_session.py:240] Graph was finalized.
+W0811 20:07:31.826777 139881578649024 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+I0811 20:07:32.008670 139881578649024 saver.py:1280] Restoring parameters from gs://yangyou-mnist/log/model.ckpt-30
+I0811 20:07:34.716124 139881578649024 session_manager.py:500] Running local_init_op.
+I0811 20:07:34.739310 139881578649024 session_manager.py:502] Done running local_init_op.
+I0811 20:07:34.784416 139881578649024 tpu_estimator.py:557] Init TPU system
+I0811 20:07:43.863512 139881578649024 tpu_estimator.py:566] Initialized TPU in 9 seconds
+I0811 20:07:43.864428 139880681166592 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:07:43.865134 139880672773888 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:07:43.930082 139881578649024 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:07:43.957333 139881578649024 tpu_estimator.py:590] Enqueue next (10) batch(es) of data to infeed.
+I0811 20:07:43.957763 139881578649024 tpu_estimator.py:594] Dequeue next (10) batch(es) of data from outfeed.
+I0811 20:07:43.986082 139880659658496 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:07:44.211194 139880659658496 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:07:44.624501 139880672773888 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:07:44.972961 139881578649024 evaluation.py:167] Evaluation [10/10]
+I0811 20:07:44.973305 139881578649024 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:07:44.973376 139881578649024 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:07:44.973628 139880681166592 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:07:44.973891 139880681166592 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:07:44.974086 139881578649024 error_handling.py:96] infeed marked as finished
+I0811 20:07:44.974267 139881578649024 tpu_estimator.py:602] Stop output thread controller
+I0811 20:07:44.974328 139881578649024 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:07:44.974509 139880672773888 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:07:44.974697 139880672773888 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:07:44.974904 139881578649024 error_handling.py:96] outfeed marked as finished
+I0811 20:07:44.975066 139881578649024 tpu_estimator.py:606] Shutdown TPU system.
+I0811 20:08:14.302544 139881578649024 evaluation.py:275] Finished evaluation at 2019-08-11-20:08:14
+I0811 20:08:14.302866 139881578649024 estimator.py:2039] Saving dict for global step 30: accuracy = 0.8187, global_step = 30, loss = 0.9174908
+I0811 20:08:18.690637 139881578649024 estimator.py:2099] Saving 'checkpoint_path' summary for global step 30: gs://yangyou-mnist/log/model.ckpt-30
+I0811 20:08:19.489105 139881578649024 error_handling.py:96] evaluation_loop marked as finished
+
+Evaluation results:
+	{'loss': 0.9174908, 'global_step': 30, 'accuracy': 0.8187}
+
+Removing gs://yangyou-mnist/log/#1565553995211992...
+Removing gs://yangyou-mnist/log/checkpoint#1565554037652635...
+Removing gs://yangyou-mnist/log/events.out.tfevents.1565553995.v3-8-tpu#1565554040784576...
+Removing gs://yangyou-mnist/log/graph.pbtxt#1565554000082517...
+Removing gs://yangyou-mnist/log/model.ckpt-0.index#1565554007942555...
+Removing gs://yangyou-mnist/log/model.ckpt-30.data-00000-of-00001#1565554034594563...
+Removing gs://yangyou-mnist/log/model.ckpt-0.meta#1565554012576961...
+Removing gs://yangyou-mnist/log/model.ckpt-0.data-00000-of-00001#1565554007089041...
+Removing gs://yangyou-mnist/log/model.ckpt-30.index#1565554035497078...
+Removing gs://yangyou-mnist/log/model.ckpt-30.meta#1565554039898575...
+Removing gs://yangyou-mnist/log/eval/#1565554095915596...
+Removing gs://yangyou-mnist/log/eval/events.out.tfevents.1565554096.v3-8-tpu#1565554099133172...
+/ [1/12 objects]   8% Done                                                      / [2/12 objects]  16% Done                                                      / [3/12 objects]  25% Done                                                      / [4/12 objects]  33% Done                                                      / [5/12 objects]  41% Done                                                      / [6/12 objects]  50% Done                                                      / [7/12 objects]  58% Done                                                      / [8/12 objects]  66% Done                                                      / [9/12 objects]  75% Done                                                      / [10/12 objects]  83% Done                                                     / [11/12 objects]  91% Done                                                     / [12/12 objects] 100% Done                                                     
+Operation completed over 12 objects.                                             
+WARNING: Logging before flag parsing goes to stderr.
+W0811 20:08:23.319566 139768278205888 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/hooks.py:28: The name tf.train.SessionRunHook is deprecated. Please use tf.estimator.SessionRunHook instead.
+
+W0811 20:08:23.320383 139768278205888 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/metric_hook.py:24: The name tf.train.LoggingTensorHook is deprecated. Please use tf.estimator.LoggingTensorHook instead.
+
+W0811 20:08:23.323066 139768278205888 deprecation_wrapper.py:119] From /home/chinayouyang1991/mnist_tpu/adam/optimization.py:83: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0811 20:08:23.323895 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:396: The name tf.app.run is deprecated. Please use tf.compat.v1.app.run instead.
+
+W0811 20:08:23.324508 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.set_verbosity is deprecated. Please use tf.compat.v1.logging.set_verbosity instead.
+
+W0811 20:08:23.324657 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.INFO is deprecated. Please use tf.compat.v1.logging.INFO instead.
+
+W0811 20:08:23.715266 139768278205888 lazy_loader.py:50] 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+W0811 20:08:23.721546 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:357: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+I0811 20:08:23.725166 139768278205888 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:08:23.818795 139768278205888 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:08:23.819081 139768278205888 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:08:23.937242 139768278205888 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:08:23.981275 139768278205888 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:08:23.981618 139768278205888 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:08:24.092334 139768278205888 estimator.py:209] Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.2:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f1e30bc2150>, '_model_dir': 'gs://yangyou-mnist/log', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None, eval_training_input_configuration=2), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f1e32da0190>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_experimental_max_worker_delay_secs': None, '_evaluation_master': u'grpc://10.240.1.2:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.2:8470'}
+I0811 20:08:24.092704 139768278205888 tpu_context.py:209] _TPUContext: eval_on_tpu True
+I0811 20:08:24.419938 139768278205888 tpu_system_metadata.py:78] Querying Tensorflow master (grpc://10.240.1.2:8470) for TPU system metadata.
+2019-08-11 20:08:24.423141: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:08:24.436196 139768278205888 tpu_system_metadata.py:148] Found TPU system:
+I0811 20:08:24.436455 139768278205888 tpu_system_metadata.py:149] *** Num TPU Cores: 8
+I0811 20:08:24.436985 139768278205888 tpu_system_metadata.py:150] *** Num TPU Workers: 1
+I0811 20:08:24.437045 139768278205888 tpu_system_metadata.py:152] *** Num TPU Cores Per Worker: 8
+I0811 20:08:24.437098 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 2595861049155086756)
+I0811 20:08:24.437397 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8880340934783471729)
+I0811 20:08:24.437453 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 7255266493862251561)
+I0811 20:08:24.437505 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 8574914532065595404)
+I0811 20:08:24.437552 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 563851270547388479)
+I0811 20:08:24.437657 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 4083811370884240537)
+I0811 20:08:24.437716 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 15871884949842149465)
+I0811 20:08:24.437762 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 7616249832350468437)
+I0811 20:08:24.437813 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 2256569285371664229)
+I0811 20:08:24.437871 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 4065674425706782656)
+I0811 20:08:24.437922 139768278205888 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 16216119565208531567)
+W0811 20:08:24.443974 139768278205888 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/training_util.py:236: initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+I0811 20:08:24.456655 139768278205888 estimator.py:1145] Calling model_fn.
+W0811 20:08:24.457267 139768278205888 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:65: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+W0811 20:08:24.754463 139768278205888 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:38: The name tf.gfile.Open is deprecated. Please use tf.io.gfile.GFile instead.
+
+W0811 20:08:25.213912 139768278205888 deprecation.py:323] From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0811 20:08:25.278834 139768278205888 deprecation.py:506] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/init_ops.py:1251: calling __init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+E0811 20:08:25.284955 139768278205888 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:08:25.465627 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:281: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+W0811 20:08:25.479245 139768278205888 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:121: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0811 20:08:25.490899 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:289: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+W0811 20:08:25.491213 139768278205888 deprecation_wrapper.py:119] From mnist_tpu.py:301: The name tf.train.get_global_step is deprecated. Please use tf.compat.v1.train.get_global_step instead.
+
+I0811 20:08:25.907742 139768278205888 basic_session_run_hooks.py:541] Create CheckpointSaverHook.
+I0811 20:08:25.923372 139768278205888 estimator.py:1147] Done calling model_fn.
+Removing gs://yangyou-mnist/log/#1565554107319240...
+Removing gs://yangyou-mnist/log/events.out.tfevents.1565554107.v3-8-tpu#1565554108054099...
+/ [1/2 objects]  50% Done                                                       / [2/2 objects] 100% Done                                                       
+Operation completed over 2 objects.                                              
+WARNING: Logging before flag parsing goes to stderr.
+W0811 20:08:58.067698 140253842097600 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/hooks.py:28: The name tf.train.SessionRunHook is deprecated. Please use tf.estimator.SessionRunHook instead.
+
+W0811 20:08:58.068471 140253842097600 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/metric_hook.py:24: The name tf.train.LoggingTensorHook is deprecated. Please use tf.estimator.LoggingTensorHook instead.
+
+W0811 20:08:58.071173 140253842097600 deprecation_wrapper.py:119] From /home/chinayouyang1991/mnist_tpu/adam/optimization.py:83: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0811 20:08:58.072016 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:396: The name tf.app.run is deprecated. Please use tf.compat.v1.app.run instead.
+
+W0811 20:08:58.072633 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.set_verbosity is deprecated. Please use tf.compat.v1.logging.set_verbosity instead.
+
+W0811 20:08:58.072758 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.INFO is deprecated. Please use tf.compat.v1.logging.INFO instead.
+
+W0811 20:08:58.472604 140253842097600 lazy_loader.py:50] 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+W0811 20:08:58.479342 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:357: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+I0811 20:08:58.482955 140253842097600 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:08:58.529045 140253842097600 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:08:58.529320 140253842097600 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:08:58.642514 140253842097600 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:08:58.731964 140253842097600 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:08:58.732253 140253842097600 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:08:58.851032 140253842097600 estimator.py:209] Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.2:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7f8f3e9920d0>, '_model_dir': 'gs://yangyou-mnist/log', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None, eval_training_input_configuration=2), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7f8f40b70190>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_experimental_max_worker_delay_secs': None, '_evaluation_master': u'grpc://10.240.1.2:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.2:8470'}
+I0811 20:08:58.851414 140253842097600 tpu_context.py:209] _TPUContext: eval_on_tpu True
+I0811 20:08:59.200359 140253842097600 tpu_system_metadata.py:78] Querying Tensorflow master (grpc://10.240.1.2:8470) for TPU system metadata.
+2019-08-11 20:08:59.203352: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:08:59.215537 140253842097600 tpu_system_metadata.py:148] Found TPU system:
+I0811 20:08:59.215773 140253842097600 tpu_system_metadata.py:149] *** Num TPU Cores: 8
+I0811 20:08:59.216357 140253842097600 tpu_system_metadata.py:150] *** Num TPU Workers: 1
+I0811 20:08:59.216417 140253842097600 tpu_system_metadata.py:152] *** Num TPU Cores Per Worker: 8
+I0811 20:08:59.216475 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 2595861049155086756)
+I0811 20:08:59.216752 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8880340934783471729)
+I0811 20:08:59.216815 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 7255266493862251561)
+I0811 20:08:59.216873 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 8574914532065595404)
+I0811 20:08:59.216922 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 563851270547388479)
+I0811 20:08:59.216970 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 4083811370884240537)
+I0811 20:08:59.217016 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 15871884949842149465)
+I0811 20:08:59.217063 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 7616249832350468437)
+I0811 20:08:59.217111 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 2256569285371664229)
+I0811 20:08:59.217155 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 4065674425706782656)
+I0811 20:08:59.217202 140253842097600 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 16216119565208531567)
+W0811 20:08:59.223280 140253842097600 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/training_util.py:236: initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+I0811 20:08:59.235496 140253842097600 estimator.py:1145] Calling model_fn.
+W0811 20:08:59.236129 140253842097600 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:65: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+W0811 20:08:59.568526 140253842097600 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:38: The name tf.gfile.Open is deprecated. Please use tf.io.gfile.GFile instead.
+
+W0811 20:09:00.052544 140253842097600 deprecation.py:323] From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0811 20:09:00.116221 140253842097600 deprecation.py:506] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/init_ops.py:1251: calling __init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+E0811 20:09:00.122431 140253842097600 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:09:00.309083 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:281: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+W0811 20:09:00.322995 140253842097600 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:121: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0811 20:09:00.334863 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:289: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+W0811 20:09:00.335179 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:301: The name tf.train.get_global_step is deprecated. Please use tf.compat.v1.train.get_global_step instead.
+
+I0811 20:09:00.757994 140253842097600 basic_session_run_hooks.py:541] Create CheckpointSaverHook.
+I0811 20:09:00.773371 140253842097600 estimator.py:1147] Done calling model_fn.
+I0811 20:09:04.089355 140253842097600 tpu_estimator.py:499] TPU job name worker
+I0811 20:09:04.203577 140253842097600 monitored_session.py:240] Graph was finalized.
+I0811 20:09:04.748960 140253842097600 session_manager.py:500] Running local_init_op.
+I0811 20:09:04.779745 140253842097600 session_manager.py:502] Done running local_init_op.
+I0811 20:09:07.605422 140253842097600 basic_session_run_hooks.py:606] Saving checkpoints for 0 into gs://yangyou-mnist/log/model.ckpt.
+W0811 20:09:20.498425 140253842097600 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:741: load (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Prefer Variable.assign which has equivalent behavior in 2.X.
+I0811 20:09:20.616436 140253842097600 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:09:20.616961 140253842097600 session_support.py:332] Installing graceful shutdown hook.
+2019-08-11 20:09:20.617368: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:09:20.622071 140253842097600 session_support.py:82] Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+I0811 20:09:20.624078 140253842097600 session_support.py:105] Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+I0811 20:09:20.628762 140253842097600 tpu_estimator.py:557] Init TPU system
+I0811 20:09:29.578413 140253842097600 tpu_estimator.py:566] Initialized TPU in 8 seconds
+I0811 20:09:29.579293 140252945569536 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:09:29.579776 140252937176832 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:09:29.621037 140253842097600 tpu_estimator.py:590] Enqueue next (30) batch(es) of data to infeed.
+I0811 20:09:29.621977 140253842097600 tpu_estimator.py:594] Dequeue next (30) batch(es) of data from outfeed.
+I0811 20:09:29.635401 140252928784128 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:09:29.747330 140252928784128 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:09:34.152442 140252937176832 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:09:38.406537 140253842097600 basic_session_run_hooks.py:262] loss = 1.0694585, step = 30
+I0811 20:09:38.408755 140253842097600 basic_session_run_hooks.py:606] Saving checkpoints for 30 into gs://yangyou-mnist/log/model.ckpt.
+I0811 20:09:51.665290 140253842097600 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:09:51.665648 140253842097600 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:09:51.666039 140252945569536 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:09:51.666383 140252945569536 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:09:51.666634 140253842097600 error_handling.py:96] infeed marked as finished
+I0811 20:09:51.666851 140253842097600 tpu_estimator.py:602] Stop output thread controller
+I0811 20:09:51.666917 140253842097600 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:09:51.667082 140252937176832 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:09:51.667254 140252937176832 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:09:51.667445 140253842097600 error_handling.py:96] outfeed marked as finished
+I0811 20:09:51.667675 140253842097600 tpu_estimator.py:606] Shutdown TPU system.
+I0811 20:09:59.869405 140253842097600 estimator.py:368] Loss for final step: 1.0694585.
+I0811 20:09:59.870285 140253842097600 error_handling.py:96] training_loop marked as finished
+I0811 20:10:00.626931 140253842097600 estimator.py:1145] Calling model_fn.
+E0811 20:10:01.329345 140253842097600 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:10:01.522454 140253842097600 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:3154: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+W0811 20:10:01.549376 140253842097600 deprecation_wrapper.py:119] From mnist_tpu.py:258: The name tf.metrics.accuracy is deprecated. Please use tf.compat.v1.metrics.accuracy instead.
+
+I0811 20:10:01.570327 140253842097600 estimator.py:1147] Done calling model_fn.
+I0811 20:10:01.587241 140253842097600 evaluation.py:255] Starting evaluation at 2019-08-11T20:10:01Z
+I0811 20:10:01.587472 140253842097600 tpu_estimator.py:499] TPU job name worker
+I0811 20:10:01.661659 140253842097600 monitored_session.py:240] Graph was finalized.
+W0811 20:10:01.662410 140253842097600 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+I0811 20:10:01.846296 140253842097600 saver.py:1280] Restoring parameters from gs://yangyou-mnist/log/model.ckpt-30
+I0811 20:10:04.314301 140253842097600 session_manager.py:500] Running local_init_op.
+I0811 20:10:04.336743 140253842097600 session_manager.py:502] Done running local_init_op.
+I0811 20:10:04.381352 140253842097600 tpu_estimator.py:557] Init TPU system
+I0811 20:10:13.552151 140253842097600 tpu_estimator.py:566] Initialized TPU in 9 seconds
+I0811 20:10:13.553183 140252944258816 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:10:13.553919 140252935866112 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:10:13.623161 140253842097600 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:10:13.651468 140253842097600 tpu_estimator.py:590] Enqueue next (10) batch(es) of data to infeed.
+I0811 20:10:13.651817 140253842097600 tpu_estimator.py:594] Dequeue next (10) batch(es) of data from outfeed.
+I0811 20:10:13.733865 140252927473408 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:10:13.848258 140252927473408 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:10:14.322823 140252935866112 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:10:14.636919 140253842097600 evaluation.py:167] Evaluation [10/10]
+I0811 20:10:14.637304 140253842097600 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:10:14.637387 140253842097600 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:10:14.637691 140252944258816 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:10:14.637998 140252944258816 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:10:14.638207 140253842097600 error_handling.py:96] infeed marked as finished
+I0811 20:10:14.638350 140253842097600 tpu_estimator.py:602] Stop output thread controller
+I0811 20:10:14.638403 140253842097600 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:10:14.638583 140252935866112 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:10:14.638734 140252935866112 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:10:14.638883 140253842097600 error_handling.py:96] outfeed marked as finished
+I0811 20:10:14.639014 140253842097600 tpu_estimator.py:606] Shutdown TPU system.
+I0811 20:10:43.941843 140253842097600 evaluation.py:275] Finished evaluation at 2019-08-11-20:10:43
+I0811 20:10:43.942208 140253842097600 estimator.py:2039] Saving dict for global step 30: accuracy = 0.8276, global_step = 30, loss = 0.9785404
+I0811 20:10:48.847541 140253842097600 estimator.py:2099] Saving 'checkpoint_path' summary for global step 30: gs://yangyou-mnist/log/model.ckpt-30
+I0811 20:10:49.658395 140253842097600 error_handling.py:96] evaluation_loop marked as finished
+
+Evaluation results:
+	{'loss': 0.9785404, 'global_step': 30, 'accuracy': 0.8276}
+
+Removing gs://yangyou-mnist/log/checkpoint#1565554188163787...
+Removing gs://yangyou-mnist/log/#1565554142180782...
+Removing gs://yangyou-mnist/log/events.out.tfevents.1565554142.v3-8-tpu#1565554191308699...
+Removing gs://yangyou-mnist/log/graph.pbtxt#1565554147031070...
+Removing gs://yangyou-mnist/log/model.ckpt-0.data-00000-of-00001#1565554153917456...
+Removing gs://yangyou-mnist/log/model.ckpt-0.index#1565554154872273...
+Removing gs://yangyou-mnist/log/model.ckpt-30.data-00000-of-00001#1565554184991221...
+Removing gs://yangyou-mnist/log/model.ckpt-30.index#1565554185844275...
+Removing gs://yangyou-mnist/log/model.ckpt-0.meta#1565554159962930...
+Removing gs://yangyou-mnist/log/model.ckpt-30.meta#1565554190377680...
+Removing gs://yangyou-mnist/log/eval/#1565554246058316...
+Removing gs://yangyou-mnist/log/eval/events.out.tfevents.1565554246.v3-8-tpu#1565554249296838...
+/ [1/12 objects]   8% Done                                                      / [2/12 objects]  16% Done                                                      / [3/12 objects]  25% Done                                                      / [4/12 objects]  33% Done                                                      / [5/12 objects]  41% Done                                                      / [6/12 objects]  50% Done                                                      / [7/12 objects]  58% Done                                                      / [8/12 objects]  66% Done                                                      / [9/12 objects]  75% Done                                                      / [10/12 objects]  83% Done                                                     / [11/12 objects]  91% Done                                                     / [12/12 objects] 100% Done                                                     
+Operation completed over 12 objects.                                             
+WARNING: Logging before flag parsing goes to stderr.
+W0811 20:10:53.528697 140425977431488 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/hooks.py:28: The name tf.train.SessionRunHook is deprecated. Please use tf.estimator.SessionRunHook instead.
+
+W0811 20:10:53.529460 140425977431488 deprecation_wrapper.py:119] From /usr/share/models/official/utils/logs/metric_hook.py:24: The name tf.train.LoggingTensorHook is deprecated. Please use tf.estimator.LoggingTensorHook instead.
+
+W0811 20:10:53.532075 140425977431488 deprecation_wrapper.py:119] From /home/chinayouyang1991/mnist_tpu/adam/optimization.py:83: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0811 20:10:53.532887 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:396: The name tf.app.run is deprecated. Please use tf.compat.v1.app.run instead.
+
+W0811 20:10:53.533442 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.set_verbosity is deprecated. Please use tf.compat.v1.logging.set_verbosity instead.
+
+W0811 20:10:53.533567 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:338: The name tf.logging.INFO is deprecated. Please use tf.compat.v1.logging.INFO instead.
+
+W0811 20:10:53.947335 140425977431488 lazy_loader.py:50] 
+The TensorFlow contrib module will not be included in TensorFlow 2.0.
+For more information, please see:
+  * https://github.com/tensorflow/community/blob/master/rfcs/20180907-contrib-sunset.md
+  * https://github.com/tensorflow/addons
+  * https://github.com/tensorflow/io (for I/O related ops)
+If you depend on functionality not listed there, please file an issue.
+
+W0811 20:10:53.954124 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:357: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+I0811 20:10:53.957941 140425977431488 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:10:54.004772 140425977431488 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:10:54.005059 140425977431488 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:10:54.112574 140425977431488 discovery.py:271] URL being requested: GET https://www.googleapis.com/discovery/v1/apis/tpu/v1alpha1/rest
+I0811 20:10:54.158308 140425977431488 discovery.py:865] URL being requested: GET https://tpu.googleapis.com/v1alpha1/projects/forrestchina1/locations/europe-west4-a/nodes/v3-8-tpu?alt=json
+I0811 20:10:54.158593 140425977431488 transport.py:157] Attempting refresh to obtain initial access_token
+I0811 20:10:54.257478 140425977431488 estimator.py:209] Using config: {'_save_checkpoints_secs': 600, '_session_config': allow_soft_placement: true
+log_device_placement: true
+cluster_def {
+  job {
+    name: "worker"
+    tasks {
+      key: 0
+      value: "10.240.1.2:8470"
+    }
+  }
+}
+, '_keep_checkpoint_max': 5, '_task_type': 'worker', '_train_distribute': None, '_is_chief': True, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x7fb752a9e290>, '_model_dir': 'gs://yangyou-mnist/log', '_protocol': None, '_save_checkpoints_steps': None, '_keep_checkpoint_every_n_hours': 10000, '_service': None, '_num_ps_replicas': 0, '_tpu_config': TPUConfig(iterations_per_loop=500, num_shards=8, num_cores_per_replica=None, per_host_input_for_training=2, tpu_job_name=None, initial_infeed_sleep_secs=None, input_partition_dims=None, eval_training_input_configuration=2), '_tf_random_seed': None, '_save_summary_steps': 100, '_device_fn': None, '_cluster': <tensorflow.python.distribute.cluster_resolver.tpu_cluster_resolver.TPUClusterResolver object at 0x7fb754c7c190>, '_experimental_distribute': None, '_num_worker_replicas': 1, '_task_id': 0, '_log_step_count_steps': None, '_experimental_max_worker_delay_secs': None, '_evaluation_master': u'grpc://10.240.1.2:8470', '_eval_distribute': None, '_global_id_in_cluster': 0, '_master': u'grpc://10.240.1.2:8470'}
+I0811 20:10:54.257889 140425977431488 tpu_context.py:209] _TPUContext: eval_on_tpu True
+I0811 20:10:54.596585 140425977431488 tpu_system_metadata.py:78] Querying Tensorflow master (grpc://10.240.1.2:8470) for TPU system metadata.
+2019-08-11 20:10:54.599607: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:10:54.611371 140425977431488 tpu_system_metadata.py:148] Found TPU system:
+I0811 20:10:54.611603 140425977431488 tpu_system_metadata.py:149] *** Num TPU Cores: 8
+I0811 20:10:54.612114 140425977431488 tpu_system_metadata.py:150] *** Num TPU Workers: 1
+I0811 20:10:54.612186 140425977431488 tpu_system_metadata.py:152] *** Num TPU Cores Per Worker: 8
+I0811 20:10:54.612240 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:CPU:0, CPU, -1, 2595861049155086756)
+I0811 20:10:54.612521 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:0, TPU, 17179869184, 8880340934783471729)
+I0811 20:10:54.612576 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:1, TPU, 17179869184, 7255266493862251561)
+I0811 20:10:54.612626 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:2, TPU, 17179869184, 8574914532065595404)
+I0811 20:10:54.612673 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:3, TPU, 17179869184, 563851270547388479)
+I0811 20:10:54.612720 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:4, TPU, 17179869184, 4083811370884240537)
+I0811 20:10:54.612772 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:5, TPU, 17179869184, 15871884949842149465)
+I0811 20:10:54.612819 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:6, TPU, 17179869184, 7616249832350468437)
+I0811 20:10:54.612867 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU:7, TPU, 17179869184, 2256569285371664229)
+I0811 20:10:54.612911 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:TPU_SYSTEM:0, TPU_SYSTEM, 17179869184, 4065674425706782656)
+I0811 20:10:54.612960 140425977431488 tpu_system_metadata.py:154] *** Available Device: _DeviceAttributes(/job:worker/replica:0/task:0/device:XLA_CPU:0, XLA_CPU, 17179869184, 16216119565208531567)
+W0811 20:10:54.619061 140425977431488 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/training_util.py:236: initialized_value (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use Variable.read_value. Variables in 2.X are initialized automatically both in eager and graph (inside tf.defun) contexts.
+I0811 20:10:54.631460 140425977431488 estimator.py:1145] Calling model_fn.
+W0811 20:10:54.632050 140425977431488 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:65: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+W0811 20:10:54.938055 140425977431488 deprecation_wrapper.py:119] From /usr/share/models/official/mnist/dataset.py:38: The name tf.gfile.Open is deprecated. Please use tf.io.gfile.GFile instead.
+
+W0811 20:10:55.410119 140425977431488 deprecation.py:323] From /usr/share/models/official/mnist/dataset.py:100: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0811 20:10:55.474572 140425977431488 deprecation.py:506] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/init_ops.py:1251: calling __init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+E0811 20:10:55.480792 140425977431488 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:10:55.661461 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:281: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+W0811 20:10:55.675750 140425977431488 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/losses/losses_impl.py:121: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0811 20:10:55.688468 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:289: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+W0811 20:10:55.688828 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:301: The name tf.train.get_global_step is deprecated. Please use tf.compat.v1.train.get_global_step instead.
+
+I0811 20:10:56.115586 140425977431488 basic_session_run_hooks.py:541] Create CheckpointSaverHook.
+I0811 20:10:56.131598 140425977431488 estimator.py:1147] Done calling model_fn.
+I0811 20:10:59.395229 140425977431488 tpu_estimator.py:499] TPU job name worker
+I0811 20:10:59.510464 140425977431488 monitored_session.py:240] Graph was finalized.
+I0811 20:11:00.074212 140425977431488 session_manager.py:500] Running local_init_op.
+I0811 20:11:00.109018 140425977431488 session_manager.py:502] Done running local_init_op.
+I0811 20:11:02.679821 140425977431488 basic_session_run_hooks.py:606] Saving checkpoints for 0 into gs://yangyou-mnist/log/model.ckpt.
+W0811 20:11:14.591761 140425977431488 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:741: load (from tensorflow.python.ops.variables) is deprecated and will be removed in a future version.
+Instructions for updating:
+Prefer Variable.assign which has equivalent behavior in 2.X.
+I0811 20:11:14.703963 140425977431488 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:11:14.704437 140425977431488 session_support.py:332] Installing graceful shutdown hook.
+2019-08-11 20:11:14.704850: W tensorflow/core/distributed_runtime/rpc/grpc_session.cc:356] GrpcSession::ListDevices will initialize the session with an empty graph and other defaults because the session has not yet been created.
+I0811 20:11:14.709759 140425977431488 session_support.py:82] Creating heartbeat manager for ['/job:worker/replica:0/task:0/device:CPU:0']
+I0811 20:11:14.711926 140425977431488 session_support.py:105] Configuring worker heartbeat: shutdown_mode: WAIT_FOR_COORDINATOR
+
+I0811 20:11:14.715481 140425977431488 tpu_estimator.py:557] Init TPU system
+I0811 20:11:26.686682 140425977431488 tpu_estimator.py:566] Initialized TPU in 11 seconds
+I0811 20:11:26.687688 140425071412992 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:11:26.688277 140425063020288 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:11:26.733153 140425977431488 tpu_estimator.py:590] Enqueue next (30) batch(es) of data to infeed.
+I0811 20:11:26.734015 140425977431488 tpu_estimator.py:594] Dequeue next (30) batch(es) of data from outfeed.
+I0811 20:11:26.744226 140425054627584 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:11:26.983308 140425054627584 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:11:31.228271 140425063020288 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:11:35.604581 140425977431488 basic_session_run_hooks.py:262] loss = 0.51250476, step = 30
+I0811 20:11:35.606839 140425977431488 basic_session_run_hooks.py:606] Saving checkpoints for 30 into gs://yangyou-mnist/log/model.ckpt.
+I0811 20:11:48.542074 140425977431488 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:11:48.542367 140425977431488 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:11:48.542669 140425071412992 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:11:48.543051 140425071412992 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:11:48.543277 140425977431488 error_handling.py:96] infeed marked as finished
+I0811 20:11:48.543498 140425977431488 tpu_estimator.py:602] Stop output thread controller
+I0811 20:11:48.543570 140425977431488 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:11:48.543735 140425063020288 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:11:48.543958 140425063020288 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:11:48.544177 140425977431488 error_handling.py:96] outfeed marked as finished
+I0811 20:11:48.544348 140425977431488 tpu_estimator.py:606] Shutdown TPU system.
+I0811 20:11:57.108207 140425977431488 estimator.py:368] Loss for final step: 0.51250476.
+I0811 20:11:57.109040 140425977431488 error_handling.py:96] training_loop marked as finished
+I0811 20:11:57.812494 140425977431488 estimator.py:1145] Calling model_fn.
+E0811 20:11:58.518515 140425977431488 tpu.py:376] Operation of type Placeholder (reshape_input) is not supported on the TPU. Execution will fail if this op is used in the graph. 
+W0811 20:11:58.711462 140425977431488 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py:3154: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+W0811 20:11:58.738961 140425977431488 deprecation_wrapper.py:119] From mnist_tpu.py:258: The name tf.metrics.accuracy is deprecated. Please use tf.compat.v1.metrics.accuracy instead.
+
+I0811 20:11:58.760238 140425977431488 estimator.py:1147] Done calling model_fn.
+I0811 20:11:58.777312 140425977431488 evaluation.py:255] Starting evaluation at 2019-08-11T20:11:58Z
+I0811 20:11:58.777549 140425977431488 tpu_estimator.py:499] TPU job name worker
+I0811 20:11:58.852469 140425977431488 monitored_session.py:240] Graph was finalized.
+W0811 20:11:58.853188 140425977431488 deprecation.py:323] From /usr/local/lib/python2.7/dist-packages/tensorflow/python/training/saver.py:1276: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+I0811 20:11:59.040425 140425977431488 saver.py:1280] Restoring parameters from gs://yangyou-mnist/log/model.ckpt-30
+I0811 20:12:01.611695 140425977431488 session_manager.py:500] Running local_init_op.
+I0811 20:12:01.636729 140425977431488 session_manager.py:502] Done running local_init_op.
+I0811 20:12:01.684242 140425977431488 tpu_estimator.py:557] Init TPU system
+I0811 20:12:13.513967 140425977431488 tpu_estimator.py:566] Initialized TPU in 11 seconds
+I0811 20:12:13.514906 140425071412992 tpu_estimator.py:514] Starting infeed thread controller.
+I0811 20:12:13.515724 140425063020288 tpu_estimator.py:533] Starting outfeed thread controller.
+I0811 20:12:13.583736 140425977431488 util.py:98] Initialized dataset iterators in 0 seconds
+I0811 20:12:13.612603 140425977431488 tpu_estimator.py:590] Enqueue next (10) batch(es) of data to infeed.
+I0811 20:12:13.612941 140425977431488 tpu_estimator.py:594] Dequeue next (10) batch(es) of data from outfeed.
+I0811 20:12:13.685458 140425054627584 transport.py:157] Attempting refresh to obtain initial access_token
+W0811 20:12:13.857959 140425054627584 preempted_hook.py:89] TPUPollingThread found TPU v3-8-tpu in state READY, and health HEALTHY.
+I0811 20:12:14.308326 140425063020288 tpu_estimator.py:275] Outfeed finished for iteration (0, 0)
+I0811 20:12:14.754081 140425977431488 evaluation.py:167] Evaluation [10/10]
+I0811 20:12:14.754446 140425977431488 tpu_estimator.py:598] Stop infeed thread controller
+I0811 20:12:14.754520 140425977431488 tpu_estimator.py:430] Shutting down InfeedController thread.
+I0811 20:12:14.754708 140425071412992 tpu_estimator.py:425] InfeedController received shutdown signal, stopping.
+I0811 20:12:14.754805 140425071412992 tpu_estimator.py:530] Infeed thread finished, shutting down.
+I0811 20:12:14.754940 140425977431488 error_handling.py:96] infeed marked as finished
+I0811 20:12:14.755038 140425977431488 tpu_estimator.py:602] Stop output thread controller
+I0811 20:12:14.755110 140425977431488 tpu_estimator.py:430] Shutting down OutfeedController thread.
+I0811 20:12:14.755254 140425063020288 tpu_estimator.py:425] OutfeedController received shutdown signal, stopping.
+I0811 20:12:14.755330 140425063020288 tpu_estimator.py:541] Outfeed thread finished, shutting down.
+I0811 20:12:14.755446 140425977431488 error_handling.py:96] outfeed marked as finished
+I0811 20:12:14.755522 140425977431488 tpu_estimator.py:606] Shutdown TPU system.
