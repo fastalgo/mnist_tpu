@@ -288,7 +288,7 @@ def model_fn(features, labels, mode, params):
     # learning_rate = tf.train.exponential_decay(FLAGS.learning_rate, tf.train.get_global_step(), 100000, 0.95, staircase=True)
     # optimizer = tf.train.MomentumOptimizer(learning_rate, 0.9)
     # optimizer = LARSOptimizer(learning_rate)
-    num_warmup_steps = int(60000.0*FLAGS.warm_up_epochs/FLAGS.batch_size)
+    num_warmup_steps = int(50000.0*FLAGS.warm_up_epochs/FLAGS.batch_size)
     train_op = optimization.create_optimizer(loss, FLAGS.learning_rate, FLAGS.train_steps, num_warmup_steps, FLAGS.use_tpu, FLAGS.poly_power, FLAGS.start_warmup_step, FLAGS.weight_decay_input)
     
     # if FLAGS.use_tpu:
@@ -318,7 +318,7 @@ def train_input_fn(params):
   # computed according to the input pipeline deployment. See
   # `tf.contrib.tpu.RunConfig` for details.
   ds = dataset.train(data_dir).cache().repeat().shuffle(
-      buffer_size=60000).batch(batch_size, drop_remainder=True)
+      buffer_size=50000).batch(batch_size, drop_remainder=True)
   return ds
 
 
