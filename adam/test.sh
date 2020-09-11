@@ -1,5 +1,5 @@
 #export PYTHONPATH="${PYTHONPATH}:/usr/share/models/"
-export TPU_NAME=yaojian
+export TPU_NAME=trump
 export DATA_DIR=gs://yangyou-mnist/data
 export MODEL_DIR=gs://yangyou-mnist/log
 gsutil -m rm -R -f $MODEL_DIR/*
